@@ -6,8 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <form action="/signin" method="post">
+
+    <form action="/signup" method="post">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
         <div>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -16,9 +20,9 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
         </div>
-        <button type="submit">Sign in</button>
+        <button type="submit">Sign Up</button>
     </form>
-
-
+    
+    
 </body>
 </html>
