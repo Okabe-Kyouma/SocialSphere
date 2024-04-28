@@ -1,0 +1,60 @@
+.nav-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 5px solid  #0C193B; */
+    width: 90vw;
+    margin-left: 5px;
+    /* border: 10px solid pink; */
+    margin-left: 35px;
+}
+
+.great-vibes-regular {
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+  }
+
+.header{
+    text-align: center;
+}
+
+.bg{
+    text-align: center;
+  height: 80vh;
+  width: 40vw;
+  box-shadow: 12px 12px 12px 12px rgba(0, 0, 0, 0.269);
+}
+
+
+.nav-main{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    
+}
+
+.item{
+    margin-left: 10px;
+}
+
+.item a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav{
+    z-index: 1000;
+    /* border: 2px solid black; */
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.269);
+    background-color: #0C193B;
+}
+
+.logo{
+    max-width: 200px;
+    max-height: 80px;
+}
