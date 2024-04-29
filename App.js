@@ -31,7 +31,7 @@ app.use(Session({
   secret: 'keyboard cat',
   resave: true,
   saveUninitialized: true,
-  cookie: { maxAge : 60000 },
+  cookie: { maxAge : 600000000000000 },
 }))
 
 
@@ -44,16 +44,8 @@ app.use(passport.session());
 
 
 app.use('/',authRoute);
-app.use('/',homeRoute)
+app.use('/',homeRoute);
 
-// app.get('/home',(req,res)=>{
-//   if(req.isAuthenticated){
-//   res.render('home.ejs');
-//   }
-//   else{
-//     res.render('landing.ejs');
-//   }
-// })
 
 app.get('/', (req, res) => {
 
@@ -63,6 +55,16 @@ app.get('/', (req, res) => {
 
 	res.render('landing.ejs');
 });
+
+app.get('/logout',(req,res)=>{
+  req.logOut((err)=>{
+    if(err){
+      console.log(err);
+      return res.redirect('/');
+    }
+    res.redirect('/signin');
+  })
+})
 
 app.listen(4000,()=>{
     console.log("Server Started at port 4000");
