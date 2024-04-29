@@ -2,7 +2,15 @@
     display: flex; /* Use flexbox to arrange icons horizontally */
     justify-content: space-around; /* Add space between icons */
     align-items: center; /* Center icons vertically */
-    width: 85vw;
+   width:  85vw;
+   margin-left: 10px;
+}
+
+
+.nav-div{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
 }
 
 .icon-link {
@@ -38,4 +46,16 @@
     font-size: 12px;
     color: white;
     cursor: pointer;
+}
+
+.icon-link img {
+    width: 30px; /* Set the width of the icons */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .icon-link img {
+        width: 20px; /* Reduce the size of icons on smaller screens */
+    }
 }
