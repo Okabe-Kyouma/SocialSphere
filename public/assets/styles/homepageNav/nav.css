@@ -11,6 +11,9 @@
     display: flex;
     justify-content: space-between;
     width: 100vw;
+    height: 15vh;
+    position: fixed;
+    background-color: #0C193B; ;
 }
 
 .icon-link {

@@ -10,6 +10,7 @@ var ans = "";
 router.get('/signin',(req,res)=>{
 
     if (req.isAuthenticated()) {
+
         return res.redirect('/home');
     }
 
@@ -19,7 +20,9 @@ router.get('/signin',(req,res)=>{
 router.get('/signup',(req,res)=>{
 
     if (req.isAuthenticated()) {
+
         return res.redirect('/home');
+
     }
 
     res.render('signup',{ans});
@@ -27,7 +30,7 @@ router.get('/signup',(req,res)=>{
 
 router.post('/signin',passport.authenticate("local"),(req,res)=>{
 
-    res.redirect('/home');
+        return res.redirect('/home');
 
 })
 
@@ -52,7 +55,7 @@ router.post('/signup', async(req,res)=>{
 
     res.send("User Sucessfully Added");
 
-    res.redirect('/home');
+    return res.redirect('/home');
 
     }
 

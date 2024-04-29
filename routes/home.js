@@ -5,7 +5,10 @@ const { User } = require('../Models/user');
 router.get('/home', (req, res) => {
    
     if (req.isAuthenticated()) {
-        return  res.render('home');
+
+        const currentUser = req.user;
+
+        return  res.render('home',{currentUser});
     }
     res.redirect('/signin');
 });
