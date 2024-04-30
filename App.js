@@ -1,6 +1,8 @@
 const express = require('express');
 const authRoute = require('./routes/auth');
 const homeRoute = require('./routes/home');
+const allRoute = require('./routes/allUsers');
+const friendRoute = require('./routes/friends');
 const path = require('path');
 const passport = require('passport');
 const {connectMongoose} = require('./Models/user');
@@ -47,6 +49,8 @@ app.use(passport.session());
 
 app.use('/',authRoute);
 app.use('/',homeRoute);
+app.use('/',allRoute);
+app.use('/',friendRoute);
 
 
 app.get('/', async (req, res) => {
@@ -68,6 +72,7 @@ app.get('/', async (req, res) => {
 
 	res.render('landing.ejs');
 });
+
 
 app.get('/logout',(req,res)=>{
   req.logOut((err)=>{

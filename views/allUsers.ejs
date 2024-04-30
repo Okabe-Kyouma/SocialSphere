@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="/assets/styles/allUser.css">
+</head>
+
+<body>
+
+    <%- include('C:/Users/Hp/Desktop/Project/views/homepageNav.ejs') %>
+
+    <% people.forEach(person => { %>
+        <% if (!currentUser.friends.includes(person._id)) { %>
+            <div class="All-container">
+                <div class="user-profile">
+                    <div class="user-photo">
+                        <img src="<%= person.profilePhoto %>" alt="Profile Photo" style="color: white;">
+                    </div>
+                    <div class="user-details">
+                        <h2><%= person.username %></h2>
+                    </div>
+                    <div class="user-actions">
+                        <a href="/follow/<%= person._id %>"><button class="follow-btn" data-user-id="<%= person._id %>">Follow</button></a>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    <% }) %>
+    
+
+ 
+ <script>
+
+    console.log("Script in working");
+
+  const followBtns = document.querySelectorAll('.follow-btn');
+
+    followBtns.forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            const userId = btn.getAttribute('data-user-id');
+
+            console.log(`Follow button clicked for user with ID: ${userId}`);  
+            
+            
+
+        })
+    })
+
+ </script>   
+
+</body>
+
+</html>
