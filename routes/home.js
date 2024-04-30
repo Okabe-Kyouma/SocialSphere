@@ -55,15 +55,36 @@ router.get('/home', async (req, res) => {
 
         const userId = currentUser._id;
 
+        const currentUserFriendsList = req.user.friends;
+
+        const list = [];
+
         console.log(`userId: ${userId}`);
 
         const ObjectIdUserId = new ObjectId(userId);
 
        const data = await postModel.find({author: ObjectIdUserId});
 
-            console.log(`data recieved: ${data}`);
+       list.push(data);
 
-        return res.render('home', { currentUser,data });
+       for(const id of currentUserFriendsList){
+        try{
+            const obj = new ObjectId(id);
+
+            const post = await postModel.find({author: obj});
+            if(post){
+                list.push(post);
+            }
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+
+            console.log(`data recieved: ${list}`);
+
+        return res.render('home', { currentUser,list });
     }
     res.redirect('/signin');
 
