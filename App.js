@@ -8,6 +8,8 @@ const Session = require('express-session');
 const cookieParser = require('cookie-parser');
 const {initializingPassport} = require('./passportConfig');
 const flash = require('connect-flash');
+const multer = require('multer');
+const { log } = require('console');
 
 connectMongoose();
 
@@ -47,10 +49,21 @@ app.use('/',authRoute);
 app.use('/',homeRoute);
 
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
 
   if (req.isAuthenticated()) {
-    return res.redirect('/home');
+
+      const currentUser = req.user;
+
+      const userId = currentUser._id;
+
+     const data = await postModel.find({userId:userId});
+
+     console.log(data);
+
+
+      return res.render('home', { currentUser,data });
+
 }
 
 	res.render('landing.ejs');

@@ -53,8 +53,6 @@ router.post('/signup', async(req,res)=>{
 
     await User.create(req.body);
 
-    res.send("User Sucessfully Added");
-
     return res.redirect('/home');
 
     }

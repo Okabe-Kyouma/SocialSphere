@@ -4,6 +4,7 @@
     align-items: center; /* Center icons vertically */
    width:  85vw;
    margin-left: 10px;
+   z-index: 10000;
 }
 
 
@@ -14,6 +15,7 @@
     height: 15vh;
     position: fixed;
     background-color: #0C193B; ;
+    z-index: 10000;
 }
 
 .icon-link {

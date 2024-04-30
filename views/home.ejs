@@ -17,44 +17,48 @@
 
         <div class="mid">
 
-            <div class="container-mid">
+           
 
-                <div class="user-info">
+                <form action="/post/upload" method="post" enctype="multipart/form-data">
 
-                    <div class="user-pic">
+                    <div class="inner-container-mid">
 
-                    </div>
 
-                    <div class="user-name">
-                        <h6><%= currentUser.username %></h6>
-                    </div>
-                
-                </div>
-    
 
-                <div class="inner-container-mid">
+                        <div class="photo-mid">
 
-                    
+                            <img class="photo-mid-icon" src="/assets/images/icons/image.png" alt="">
+                            <input type="file" name="post-image">
 
-                    <div class="photo-mid">
+                        </div>
 
-                        <img class="photo-mid-icon" src="/assets/images/icons/image.png" alt="">
+                        <div class="text-mid">
 
-                    </div>
+                            <textarea class="text-mid-area" name="postDescription" id="" cols="15" rows="5" placeholder="Type here.."></textarea>
 
-                    <div class="text-mid">
 
-                        <textarea class="text-mid-area" name="" id="" cols="15" rows="5" placeholder="Type here.."></textarea>
+                        </div>
 
                     </div>
 
-                </div>
+                    <button class="btn-mid" type="submit">Upload</button>
 
-                <button class="btn-mid">Upload</button>
+                </form>
 
-            </div>
+                <% console.log(data); %>
 
-            
+
+                <% if(data && data.length > 0) { %>
+                    <% data.forEach(post => { %>
+                        <div class="main">
+                            <img src="/upload/<%= post.author %>/<%= post.image %>" style="width: 20px; height: 20px;" alt="Post Image">
+                            <p><%= post.postDescription %></p>
+                            <!-- Display likes, comments, dislikes here -->
+                        </div>
+                    <% }) %>
+                <% } %>
+
+
 
 
         </div>

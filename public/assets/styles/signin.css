@@ -11,16 +11,13 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-   
 }
-
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; 
-   
 }
 
 form {
@@ -32,7 +29,7 @@ form {
     width: 90%; 
 }
 
-.jump{
+.jump {
     margin-top: 5%;
     text-align: center;
 }
@@ -93,4 +90,21 @@ button[type="submit"]:hover {
 
 .link a:hover {
     color: #FF5733; 
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 15px; /* Add some padding to the container */
+    }
+
+    form {
+        max-width: none; /* Remove the maximum width for smaller screens */
+        width: 100%; /* Take up the full width of the container */
+    }
+
+    .logo {
+        width: 80px; /* Adjust the size of the logo */
+        height: 80px; /* Adjust the size of the logo */
+    }
 }

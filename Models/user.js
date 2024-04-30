@@ -25,7 +25,11 @@ const userSchema = new mongoose.Schema({
         type : String,
         required : true,
         // unique : true,
-    }
+    },
+    postCount:{type:Number,default:0},
+    friends: [ { type: mongoose.Types.ObjectId } ],
+    profilePhoto:String,
+    coverPhoto:String,
 })
 
 exports.User = mongoose.model("User",userSchema);
