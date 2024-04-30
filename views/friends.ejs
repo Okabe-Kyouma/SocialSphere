@@ -4,10 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/assets/styles/friends.css">
 </head>
 <body>
 
     <%- include('C:/Users/Hp/Desktop/Project/views/homepageNav.ejs') %>
+
+    <% friendArray.forEach(person => { %>
+            <div class="All-container">
+                <div class="user-profile">
+                    <div class="user-photo">
+                        <img src="<%= person.profilePhoto %>" alt="Profile Photo" style="color: white;">
+                    </div>
+                    <div class="user-details">
+                        <h2 style="color: white;"><%= person.username %></h2>
+                    </div>
+                    <div class="user-actions">
+                        <a href="/Unfollow/<%= person._id %>"><button class="follow-btn" data-user-id="<%= person._id %>">Unfollow</button></a>
+                    </div>
+                </div>
+            </div>
+    <% }) %>
+    
     
 </body>
 </html>
