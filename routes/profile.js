@@ -48,6 +48,55 @@ const upload = multer({
 
 
 
+
+
+
+
+
+
+
+
+
+const storage2 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const userId = req.user._id.toString(); // Convert ObjectId to string
+        const uploadDir2 = path.join(__dirname, '../public/profilePhoto', userId);
+        fs.stat(uploadDir2, (err, stats) => {
+            if (err || !stats.isDirectory()) {
+                console.log('Destination directory does not exist, creating it...');
+                fs.mkdir(uploadDir2, { recursive: true }, err => cb(err, uploadDir2));
+            } else {
+                console.log('Destination directory exists.');
+                cb(null, uploadDir2);
+            }
+        });
+    },
+    filename: (req, file, cb) => {
+        const filename = req.user._id.toString() + '-' + Date.now() + path.extname(file.originalname);
+        cb(null, filename);
+    }
+});
+
+
+
+
+const upload2 = multer({
+	storage: storage2,
+	
+}).single('profile-image');
+
+
+
+
+
+
+
+
+
+
+
+
+
 router.get('/profile',async (req,res)=>{
     if(req.isAuthenticated()){
 
@@ -67,6 +116,50 @@ router.get('/profile',async (req,res)=>{
         res.redirect('/');
     }
 });
+
+
+
+router.post('/profile/profilePhoto',upload2,async (req,res)=>{
+
+    if(req.isAuthenticated()){
+
+        const currentUser = req.user;
+
+
+        console.log(req.body)
+    console.log(req.file)
+    
+
+   if(req.file){
+
+      currentUser.profilePhoto = req.file.filename;
+
+      console.log(`got the image as ${currentUser.profilePhoto}`);
+
+   }
+
+    
+
+   await currentUser.save();
+
+
+    res.redirect('/profile');
+
+
+
+
+
+
+    }
+    else{
+        res.redirect('/');
+    }
+    
+
+})
+
+
+
 
 router.post('/profile/coverPhoto',upload,async (req,res)=>{
 

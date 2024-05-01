@@ -66,7 +66,13 @@
             </div>
             <div class="user-info-box">
                 <div class="user-profile-photo">
-                    <img src="<%= person.profilePhoto %>" alt="Profile Photo">
+                    <% const proUrl = "/profilePhoto/" + person._id + "/" + person.profilePhoto %>
+                    <% if(person.profilePhoto) {%>
+                    <img class="user-profile-image" src="<%=proUrl%>" alt="Profile Photo">
+                    <% } else { %>
+                    <img class="user-profile-image" src="/assets/images/defaultProfile/defaultProfile.png"
+                        alt="Profile Photo">
+                    <%}%>
                 </div>
                 <div class="user-info">
                     <h6 style="text-transform: uppercase; max-lines: 1; text-overflow: ellipsis;"><%= person.username %>
@@ -86,10 +92,17 @@
             </div>
             <div class="user-info-box">
                 <div class="user-profile-photo">
-                    <img src="<%= person.profilePhoto %>" alt="Profile Photo">
+                    <% const proUrl = "/profilePhoto/" + person._id + "/" + person.profilePhoto %>
+                    <% if(person.profilePhoto) {%>
+                    <img class="user-profile-image" src="<%=proUrl%>" alt="Profile Photo">
+                    <% } else { %>
+                    <img class="user-profile-image" src="/assets/images/defaultProfile/defaultProfile.png"
+                        alt="Profile Photo">
+                    <%}%>
                 </div>
                 <div class="user-info">
-                    <h6 style="text-transform: uppercase; max-lines: 1; text-overflow: ellipsis;"><%= person.username %></h6>
+                    <h6 style="text-transform: uppercase; max-lines: 1; text-overflow: ellipsis;"><%= person.username %>
+                    </h6>
                     <a href="/follow/<%= person._id %>">
                         <button class="follow-btn" data-user-id="<%= person._id %>">Follow</button>
                     </a>

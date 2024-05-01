@@ -22,9 +22,14 @@
             </div>
             <div class="user-info-box">
                 <div class="user-profile-photo">
-                    <img src="<%= person.profilePhoto %>" alt="Profile Photo" style="color: white;">
+                    <% const proUrl = "/profilePhoto/" + person._id + "/" + person.profilePhoto %>
+                    <% if(person.profilePhoto) {%>
+                    <img class="user-profile-image" src="<%=proUrl%>" alt="Profile Photo">
+                    <% } else { %>
+                    <img class="user-profile-image" src="/assets/images/defaultProfile/defaultProfile.png"
+                        alt="Profile Photo">
+                    <%}%>
                 </div>
-
                 <div class="user-info">
                     <h6 style="text-transform: uppercase; max-lines: 1; text-overflow: ellipsis;"><%= person.username %>
                     </h6>
@@ -42,7 +47,13 @@
             </div>
             <div class="user-info-box">
                 <div class="user-profile-photo">
-                    <img src="<%= person.profilePhoto %>" alt="Profile Photo" style="color: black;">
+                    <% const proUrl = "/profilePhoto/" + person._id + "/" + person.profilePhoto %>
+                    <% if(person.profilePhoto) {%>
+                    <img class="user-profile-image" src="<%=proUrl%>" alt="Profile Photo">
+                    <% } else { %>
+                    <img class="user-profile-image" src="/assets/images/defaultProfile/defaultProfile.png"
+                        alt="Profile Photo">
+                    <%}%>
                 </div>
                 <div class="user-info">
                     <h6 style="text-transform: uppercase; max-lines: 1; text-overflow: ellipsis;" ><%= person.username %></h6>

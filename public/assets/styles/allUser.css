@@ -30,6 +30,16 @@ body {
 
 }
 
+.user-profile-image {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 10vw; /* Adjust the width based on viewport width */
+    height: 10vw; /* Set height relative to width for a circular shape */
+    max-width: 100px; /* Limit the maximum width */
+    max-height: 100px; /* Limit the maximum height */
+}
+
+
 .user-info-box{
 
     margin: 5px;
@@ -61,7 +71,6 @@ body {
 
 .user-profile-photo {
     border-radius: 50%;
-    border: 1px solid black;
     width: 10vw; /* Adjust the width based on viewport width */
     height: 10vw; /* Set height relative to width for a circular shape */
     max-width: 100px; /* Limit the maximum width */
