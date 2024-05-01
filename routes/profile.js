@@ -119,6 +119,27 @@ router.get('/profile',async (req,res)=>{
 
 
 
+router.get('/profile/post/delete/:postId',async(req,res)=>{
+    
+    if(req.isAuthenticated()){
+
+       const {postId} = req.params;
+
+       await postModel.deleteOne({ _id: postId });
+
+       res.redirect('/profile');
+
+    }
+    else{
+        res.redirect('/');
+    }
+
+
+
+})
+
+
+
 router.post('/profile/profilePhoto',upload2,async (req,res)=>{
 
     if(req.isAuthenticated()){

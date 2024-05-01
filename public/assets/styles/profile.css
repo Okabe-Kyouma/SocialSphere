@@ -124,3 +124,16 @@ body {
     display: block;
     margin-bottom: 10px;
 }
+
+.delete-post-btn {
+    background-color: #ff6666;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-post-btn:hover {
+    background-color: #ff3333;
+}
