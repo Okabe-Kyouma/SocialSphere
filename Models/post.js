@@ -4,8 +4,9 @@ const postModel = new mongoose.Schema({
     author: {
         type: mongoose.Schema.ObjectId,
         required: true,
-        ref:'user'
+        ref:'user',
     },
+    authorUsername : String,
     postDescription : String,
     image: String,
     likes: [String],

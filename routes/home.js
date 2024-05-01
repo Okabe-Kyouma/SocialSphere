@@ -99,6 +99,27 @@ router.get('/home', async (req, res) => {
 
 });
 
+router.post('/home/post/delete/:postId',async (req,res)=>{
+
+     if(req.isAuthenticated()){
+
+        const {postId} = req.params;
+
+        await postModel.deleteOne({_id: postId});
+
+        res.redirect('/home');
+
+
+     }
+     else{
+
+         res.redirect('/');
+
+     }
+
+
+})
+
 
 
 
@@ -119,6 +140,7 @@ router.post('/post/upload', upload, async (req, res) => {
           image:req.file.filename,
           postDescription: req.body.postDescription,
           author:  req.user._id,
+          authorUsername : req.user.username,
       };
 
    }else{
@@ -126,6 +148,7 @@ router.post('/post/upload', upload, async (req, res) => {
        data = {
            postDescription: req.body.postDescription,
            author:  req.user._id,
+           authorUsername : req.user.username,
        };
        
    }

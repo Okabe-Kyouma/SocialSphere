@@ -23,38 +23,45 @@
                         <input type="file" name="post-image">
                     </div>
                     <div class="text-mid">
-                        <textarea class="text-mid-area" name="postDescription" id="" cols="30" rows="10" placeholder="Type here.."></textarea>
+                        <textarea class="text-mid-area" name="postDescription" id="" cols="30" rows="10"
+                            placeholder="Type here.."></textarea>
                     </div>
                 </div>
                 <button class="btn-mid" type="submit">Upload</button>
             </form>
 
             <% if(list && list.length > 0) { %>
-                <% list.forEach(posts => { %>
-                    <% posts.forEach(post => { %>
-                        <div class="post">
-                            <div class="post-profile">
-                                <% if(String(post.author) === String(currentUser._id)){ %>
-                                    <% const proUrl = "/profilePhoto/" + currentUser._id + "/" + currentUser.profilePhoto %>
-                                <img src="<%proUrl%>" alt="Profile Image">
-                                <% } else { %>
-                                    <img src="/profilePhoto/<%= post.author %>/<%= post.profilePhoto %>" alt="Profile Image">
-                                    <%} %>
-                                <div class="profile-info">
-                                    <% if(String(post.author) === String(currentUser._id)){ %>
-                                    <h6 class="author-name" style="text-transform: uppercase;"><%= currentUser.username %></h6>
-                                    <% } else { %>
-                                        <p class="author-name"><%= post.author %></p>
-                                        <% }%>
-                                </div>
-                            </div>
-                            <div class="post-content">
-                                <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image" alt="Post Image">
-                                <p class="post-description"><%= post.postDescription %></p>
-                            </div>
-                        </div>
-                    <% }) %>
-                <% }) %>
+            <% list.forEach(posts => { %>
+            <% posts.forEach(post => { %>
+            <div class="post">
+                <div class="post-profile">
+                    <% if(String(post.author) === String(currentUser._id)){ %>
+                    <% const proUrl = "/profilePhoto/" + currentUser._id + "/" + currentUser.profilePhoto %>
+                    <img src="<%=proUrl%>" alt="Profile Image">
+                    <% } else { %>
+                    <img src="/profilePhoto/<%= post.author %>/<%= post.profilePhoto %>" alt="Profile Image">
+                    <%}%>
+                    <div class="profile-info">
+                        <% if(String(post.author) === String(currentUser._id)){ %>
+                        <h6 class="author-name" style="text-transform: uppercase;"><%= currentUser.username %></h6>
+                        <% } else { %>
+                        <% console.log(`posssssssssssssssssssst username ${post.authorUsername}`) %>
+                        <h6 class="author-name" style="text-transform: uppercase;"><%= post.authorUsername %></h6>
+                        <% }%>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image" alt="Post Image">
+                    <p class="post-description"><%= post.postDescription %></p>
+                    <% if(String(post.author) === String(currentUser._id)){ %>
+                    <form action="/home/post/delete/<%= post._id %>" method="post">
+                        <button class="delete-btn" type="submit">Delete</button>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+            <% }) %>
+            <% }) %>
             <% } %>
         </div>
 
