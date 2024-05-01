@@ -5,96 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="/assets/styles/profile.css">
 </head>
-<style>
-    body {
-        overflow-x: hidden;
-    }
-
-    .post-des {
-        text-align: center;
-        text-decoration: underline;
-        text-transform: uppercase;
-    }
-
-    .post {
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    .row {
-        border: 2px solid black;
-        height: 8vw;
-        width: 98.5vh;
-    }
-
-    h2 {
-        text-align: center;
-    }
-
-    .cover-photo-div {
-        height: 20vh;
-        border: 2px solid pink;
-        margin: 20px;
-    }
-
-    .profile-photo-div {
-        border-radius: 50%;
-        height: 50vh;
-        width: 30vw;
-        margin: 90px;
-        border: 1px solid orange;
-    }
-</style>
 
 <body>
 
     <%- include('C:/Users/Hp/Desktop/Project/views/homepageNav.ejs') %>
 
-    <% console.log('/coverPhoto/' + currentUser._id + '/' + currentUser.coverPhoto); %>
-
-
-    <div class="profile-container-photo">
-        <div class="cover-photo-div">
+    <div class="profile-container">
+        <div class="cover-photo-div" onmouseover="showUpload('cover')" onmouseout="hideUpload('cover')">
             <% if(currentUser.coverPhoto) { %>
-
-            <img src="/coverPhoto/<%=currentUser._id%>/<%=currentUser.coverPhoto%>" style="width: 100%; height: 100%;"
-                alt="Cover Photo">
+            <a href="/profile/coverPhoto">
+                <img src="/coverPhoto/<%=currentUser._id%>/<%=currentUser.coverPhoto%>" alt="Cover Photo">
+            </a>
             <% } else { %>
-            <form action="/profile/coverPhoto" method="post" enctype="multipart/form-data">
-                <input type="file" name="cover-image">
-                <button class="cover-photo-btn" type="submit">Upload Cover Photo</button>
-            </form>
+            <a href="/profile/coverPhoto">
+                <img src="/assets/images/defaultCover/defaultCover.jpg" alt="Default Cover Photo">
+            </a>
             <% } %>
+            <form id="cover-form" class="upload-form" action="/profile/coverPhoto" method="post"
+                enctype="multipart/form-data">
+                <input class="file-input" type="file" name="cover-image">
+                <button class="upload-btn" type="submit">Upload Cover Photo</button>
+            </form>
         </div>
 
-        <div class="profile-photo-div">
-            <% if(currentUser.profilePhoto) { %>
-            <img src="/profilePhoto/<%=currentUser._id%>/<%=currentUser.profilePhoto%>"
-                style="width: 100%; height: 100%;" alt="Cover Photo">
-            <%} else { %>
-            <form action="/profile/profilePhoto" method="post" enctype="multipart/form-data">
-                <input type="file" name="profile-image">
-                <button class="profile-photo-btn" type="submit">Upload Profile Photo</button>
-            </form>
-            <%} %>
+        <div class="profile-info">
+            <div class="profile-photo-div" onmouseover="showUpload('profile')" onmouseout="hideUpload('profile')">
+                <% if(currentUser.profilePhoto) { %>
+                <a href="/profile/profilePhoto">
+                    <img src="/profilePhoto/<%=currentUser._id%>/<%=currentUser.profilePhoto%>"
+                        alt="Profile Photo">
+                </a>
+                <% } else { %>
+                <a href="/profile/profilePhoto">
+                    <img src="/assets/images/defaultProfile/defaultProfile.png" alt="Default Profile Photo">
+                </a>
+                <% } %>
+                <form id="profile-form" class="upload-form" action="/profile/profilePhoto" method="post"
+                    enctype="multipart/form-data">
+                    <input class="file-input" type="file" name="profile-image">
+                    <button class="upload-btn" type="submit">Upload Profile Photo</button>
+                </form>
+                <h2 class="username"><%= currentUser.username %></h2>
+            </div>
         </div>
+
         <div class="user-posts">
             <h2>Your Posts</h2>
             <% data.forEach(post => { %>
             <div class="post">
                 <p class="post-des"><%= post.postDescription %></p>
                 <div class="uploaded-image">
-                    <img class="post-image" src="/upload/<%= post.author %>/<%= post.image %>"
-                        style="width: 20px; height: 20px;" alt="Post Image">
+                    <img class="post-image" src="/upload/<%= post.author %>/<%= post.image %>" alt="Post Image">
                 </div>
-                <div class="row">
-
+                <div class="interactions">
+                    <button class="like-btn">Like</button>
+                    <span class="like-count"><%= post.likes %></span>
+                    <button class="comment-btn">Comment</button>
+                    <span class="comment-count"><%= post.comments %></span>
+                    <button class="dislike-btn">Dislike</button>
+                    <span class="dislike-count"><%= post.dislikes %></span>
                 </div>
             </div>
             <% }) %>
         </div>
     </div>
+
+    <script>
+        function showUpload(type) {
+            const form = document.getElementById(`${type}-form`);
+            form.style.opacity = "1";
+        }
+
+        function hideUpload(type) {
+            const form = document.getElementById(`${type}-form`);
+            form.style.opacity = "0";
+            form.reset(); // Reset the form (clear input value)
+        }
+    </script>
 
 </body>
 
