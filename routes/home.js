@@ -68,8 +68,16 @@ router.get('/home', async (req, res) => {
 
        list.push(data);
 
+       const listOfUsersWithPosts = [];
+
        for(const id of currentUserFriendsList){
         try{
+
+
+             const uu = await User.findById(id);
+
+             listOfUsersWithPosts.push(uu);
+
             const obj = new ObjectId(id);
 
             const post = await postModel.find({author: obj});
@@ -83,9 +91,9 @@ router.get('/home', async (req, res) => {
     }
 
 
-            console.log(`data recieved: ${list}`);
+            console.log(`list of users with posts and frnds: ${listOfUsersWithPosts}`);
 
-        return res.render('home', { currentUser,list });
+        return res.render('home', { currentUser,list,listOfUsersWithPosts });
     }
     res.redirect('/signin');
 

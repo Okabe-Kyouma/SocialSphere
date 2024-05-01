@@ -34,10 +34,18 @@
                     <% posts.forEach(post => { %>
                         <div class="post">
                             <div class="post-profile">
-                                <img src="/profilePhoto/<%= post.author %>/<%= post.profilePhoto %>" alt="Profile Image">
+                                <% if(String(post.author) === String(currentUser._id)){ %>
+                                    <% const proUrl = "/profilePhoto/" + currentUser._id + "/" + currentUser.profilePhoto %>
+                                <img src="<%proUrl%>" alt="Profile Image">
+                                <% } else { %>
+                                    <img src="/profilePhoto/<%= post.author %>/<%= post.profilePhoto %>" alt="Profile Image">
+                                    <%} %>
                                 <div class="profile-info">
-                                    <!-- <p class="user-name"><%= post.username %></p> -->
-                                    <p class="author-name"><%= post.author %></p>
+                                    <% if(String(post.author) === String(currentUser._id)){ %>
+                                    <h6 class="author-name" style="text-transform: uppercase;"><%= currentUser.username %></h6>
+                                    <% } else { %>
+                                        <p class="author-name"><%= post.author %></p>
+                                        <% }%>
                                 </div>
                             </div>
                             <div class="post-content">

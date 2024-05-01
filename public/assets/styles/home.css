@@ -116,3 +116,19 @@ body {
     font-size: 16px;
     line-height: 1.5;
 }
+
+@media (max-width: 768px) {
+    .left,
+    .right {
+        display: none; /* Hide left and right parts for smaller screens */
+    }
+    
+    .mid {
+        grid-column: 1 / -1; /* Span the entire width */
+        margin-top: 20px; /* Adjust margin for smaller screens */
+    }
+    
+    .home-form {
+        bottom: 20px; /* Adjust the position of the form */
+    }
+}

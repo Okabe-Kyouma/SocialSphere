@@ -25,7 +25,7 @@
             <% } %>
             <form id="cover-form" class="upload-form" action="/profile/coverPhoto" method="post"
                 enctype="multipart/form-data">
-                <input class="file-input" type="file" name="cover-image">
+                <input class="file-input" type="file" name="cover-image" onchange="toggleHover('cover')">
                 <button class="upload-btn" type="submit">Upload Cover Photo</button>
             </form>
         </div>
@@ -44,13 +44,14 @@
                 <% } %>
                 <form id="profile-form" class="upload-form" action="/profile/profilePhoto" method="post"
                     enctype="multipart/form-data">
-                    <input class="file-input" type="file" name="profile-image">
+                    <input class="file-input" type="file" name="profile-image" onchange="toggleHover('profile')">
                     <button class="upload-btn" type="submit">Upload Profile Photo</button>
                 </form>
             </div>
         </div>
 
-        <div class="username-container" style="text-align: center; text-transform: uppercase; text-decoration: underline; margin-top: 20px;">
+        <div class="username-container"
+            style="text-align: center; text-transform: uppercase; text-decoration: underline; margin-top: 20px;">
             <h2 class="username"><%= currentUser.username %></h2>
         </div>
 
@@ -79,13 +80,28 @@
     <script>
         function showUpload(type) {
             const form = document.getElementById(`${type}-form`);
-            form.style.opacity = "1";
+            if (!form.querySelector('.file-input').files.length) {
+                form.style.opacity = "1";
+            }
         }
     
         function hideUpload(type) {
             const form = document.getElementById(`${type}-form`);
-            form.style.opacity = "0";
-            form.reset(); 
+            if (!form.querySelector('.file-input').files.length) {
+                form.style.opacity = "0";
+                form.reset();
+            }
+        }
+    
+        function toggleHover(type) {
+            const form = document.getElementById(`${type}-form`);
+            const uploadBtn = form.querySelector('.upload-btn');
+            const isFileSelected = form.querySelector('.file-input').files.length > 0;
+            if (isFileSelected) {
+                uploadBtn.classList.add('disabled');
+            } else {
+                uploadBtn.classList.remove('disabled');
+            }
         }
     
         document.querySelectorAll('.delete-post-btn').forEach(button => {
