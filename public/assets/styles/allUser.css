@@ -3,6 +3,19 @@ body {
     padding: 0;
 }
 
+.All-container-bgm{
+
+    border: 2px solid pink;
+    padding: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    margin: 20px;
+    border-radius: 10px;
+
+}
+
 .All-container {
     border: 2px solid pink;
     padding: 20px;

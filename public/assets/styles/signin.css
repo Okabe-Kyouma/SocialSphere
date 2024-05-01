@@ -20,7 +20,7 @@ body {
     height: 100vh; 
 }
 
-form {
+.signin-form {
     background-color: #FFFFFF; 
     padding: 40px;
     border-radius: 10px;
@@ -34,8 +34,8 @@ form {
     text-align: center;
 }
 
-input[type="text"],
-input[type="password"] {
+.input-username,
+.input-password{
     width: 100%;
     padding: 15px;
     margin: 10px 0;
@@ -47,7 +47,7 @@ input[type="password"] {
     outline: none; 
 }
 
-button[type="submit"] {
+.btn-signin {
     background-color: #0C193B; 
     color: #FFFFFF;
     padding: 15px;
@@ -60,7 +60,7 @@ button[type="submit"] {
     outline: none; 
 }
 
-button[type="submit"]:hover {
+.btn-signin:hover {
     background-color: #FF5733; 
 }
 

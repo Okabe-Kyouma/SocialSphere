@@ -18,42 +18,43 @@
 
     <% people.forEach(person => { %>
         <% if (!currentUser.friends.includes(person._id)) { %>
-            <div class="All-container">
+            <% if(person.coverPhoto) { %>
+                <% const url = "/coverPhoto/" + person._id + "/" + person.coverPhoto %>
+                <div class="All-container" style="background-image: url(<%=url%>); opacity:0.8;">
+                    <div class="user-profile">
+                        <div class="user-photo">
+                            <img src="<%= person.profilePhoto %>" alt="Profile Photo">
+                        </div>
+                        <div class="user-details">
+                            <h2><%= person.username %></h2>
+                        </div>
+                        <div class="user-actions">
+                            <a href="/follow/<%= person._id %>">
+                                <button class="follow-btn" data-user-id="<%= person._id %>">Follow</button>
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+            <% } else { %>
+                <div class="All-container">
                 <div class="user-profile">
                     <div class="user-photo">
-                        <img src="<%= person.profilePhoto %>" alt="Profile Photo" style="color: white;">
+                        <img src="<%= person.profilePhoto %>" alt="Profile Photo">
                     </div>
                     <div class="user-details">
                         <h2><%= person.username %></h2>
                     </div>
                     <div class="user-actions">
-                        <a href="/follow/<%= person._id %>"><button class="follow-btn" data-user-id="<%= person._id %>">Follow</button></a>
+                        <a href="/follow/<%= person._id %>">
+                            <button class="follow-btn" data-user-id="<%= person._id %>">Follow</button>
+                        </a>
                     </div>
                 </div>
             </div>
+            <% } %>
         <% } %>
     <% }) %>
-    
-
- 
- <script>
-
-    console.log("Script in working");
-
-  const followBtns = document.querySelectorAll('.follow-btn');
-
-    followBtns.forEach(btn=>{
-        btn.addEventListener('click',()=>{
-            const userId = btn.getAttribute('data-user-id');
-
-            console.log(`Follow button clicked for user with ID: ${userId}`);  
-            
-            
-
-        })
-    })
-
- </script>   
+      
 
 </body>
 

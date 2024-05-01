@@ -3,6 +3,7 @@ const authRoute = require('./routes/auth');
 const homeRoute = require('./routes/home');
 const allRoute = require('./routes/allUsers');
 const friendRoute = require('./routes/friends');
+const profileRoute = require('./routes/profile');
 const path = require('path');
 const passport = require('passport');
 const {connectMongoose} = require('./Models/user');
@@ -51,6 +52,7 @@ app.use('/',authRoute);
 app.use('/',homeRoute);
 app.use('/',allRoute);
 app.use('/',friendRoute);
+app.use('/',profileRoute);
 
 
 app.get('/', async (req, res) => {

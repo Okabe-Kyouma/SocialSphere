@@ -28,7 +28,7 @@ body {
    
 }
 
-form {
+.signup-form {
     background-color: #FFFFFF; 
     padding: 40px;
     border-radius: 10px;
@@ -38,9 +38,9 @@ form {
     margin-top: 20%;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+.input-signup-email,
+.input-signup-username,
+.input-signup-password {
     width: 100%;
     padding: 15px;
     margin: 10px 0;
@@ -52,7 +52,7 @@ input[type="password"] {
     outline: none; 
 }
 
-button[type="submit"] {
+.signup-btn {
     background-color: #0C193B; 
     color: #FFFFFF;
     padding: 15px;
@@ -65,7 +65,7 @@ button[type="submit"] {
     outline: none; 
 }
 
-button[type="submit"]:hover {
+.signup-btn:hover {
     background-color: #FF5733; 
 }
 

@@ -19,38 +19,26 @@
 
     <div class="center-div">
 
-    <form action="/signup" method="post">
+    <form class="signup-form" action="/signup" method="post">
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <input class="input-signup-email" type="email" id="email" name="email" placeholder="Enter your email" required>
         </div>
         <div>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            <input class="input-signup-username" type="text" id="username" name="username" placeholder="Enter your username" required>
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <input class="input-signup-password" type="password" id="password" name="password" placeholder="Enter your password" required>
         </div>
-        <button type="submit">Sign Up</button>
+        <button class="signup-btn" type="submit">Sign Up</button>
         <div class="jump">
             <p>Already a User? <a href="/signin">Login</a></p>
         </div>
     </form>
     
 </div>
-
-<!-- <script>
-    if ( ans.length > 0) {
-        setTimeout(function(){
-            var alertMessage = document.getElementById('alertMessage');
-            if(alertMessage){
-                alertMessage.style.display = 'none';
-            }
-        }, 5000);
-    }
-</script> -->
-
 
     
 </body>

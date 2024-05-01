@@ -5,7 +5,7 @@ body {
     overflow-x: hidden;
 }
 
-form {
+.home-form {
     height: 63vh;
     position: relative;
     bottom: 70px;
