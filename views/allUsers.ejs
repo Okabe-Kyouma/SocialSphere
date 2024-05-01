@@ -9,14 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="/assets/styles/allUser.css">
+    <link rel="stylesheet" href="/assets/styles/allUser.css">
 </head>
 
 <body>
 
     <%- include('C:/Users/Hp/Desktop/Project/views/homepageNav.ejs') %>
 
-    <% people.forEach(person => { %>
+    <!-- <% people.forEach(person => { %>
         <% if (!currentUser.friends.includes(person._id)) { %>
             <% if(person.coverPhoto) { %>
                 <% const url = "/coverPhoto/" + person._id + "/" + person.coverPhoto %>
@@ -53,8 +53,54 @@
             </div>
             <% } %>
         <% } %>
+    <% }) %> -->
+
+    <% people.forEach(person => { %>
+    <% if (!currentUser.friends.includes(person._id)) { %>
+    <% if(person.coverPhoto) { %>
+    <% const url = "/coverPhoto/" + person._id + "/" + person.coverPhoto %>
+    <div class="All-container">
+        <div class="user-profile">
+            <div class="user-cover-photo"
+                style="background-image: url(<%=url%>); opacity:1; background-repeat: no-repeat; background-size: contain; background-size: cover;">
+            </div>
+            <div class="user-info-box">
+                <div class="user-profile-photo">
+                    <img src="<%= person.profilePhoto %>" alt="Profile Photo">
+                </div>
+                <div class="user-info">
+                    <h6 style="text-transform: uppercase; max-lines: 1; text-overflow: ellipsis;"><%= person.username %>
+                    </h6>
+                    <a href="/follow/<%= person._id %>">
+                        <button class="follow-btn" data-user-id="<%= person._id %>">Follow</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } else { %>
+    <div class="All-container">
+        <div class="user-profile">
+            <div class="user-cover-photo"
+                style="background-image: url('/assets/images/defaultCover/defaultCover.jpg');  background-repeat: no-repeat; background-size: contain; background-size: cover;">
+            </div>
+            <div class="user-info-box">
+                <div class="user-profile-photo">
+                    <img src="<%= person.profilePhoto %>" alt="Profile Photo">
+                </div>
+                <div class="user-info">
+                    <h6 style="text-transform: uppercase; max-lines: 1; text-overflow: ellipsis;"><%= person.username %></h6>
+                    <a href="/follow/<%= person._id %>">
+                        <button class="follow-btn" data-user-id="<%= person._id %>">Follow</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <% } %>
     <% }) %>
-      
+
 
 </body>
 

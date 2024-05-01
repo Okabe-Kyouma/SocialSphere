@@ -1,31 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/assets/styles/friends.css">
 </head>
+
 <body>
 
     <%- include('C:/Users/Hp/Desktop/Project/views/homepageNav.ejs') %>
 
     <% friendArray.forEach(person => { %>
-            <div class="All-container">
-                <div class="user-profile">
-                    <div class="user-photo">
-                        <img src="<%= person.profilePhoto %>" alt="Profile Photo" style="color: white;">
-                    </div>
-                    <div class="user-details">
-                        <h2 style="color: white;"><%= person.username %></h2>
-                    </div>
-                    <div class="user-actions">
-                        <a href="/Unfollow/<%= person._id %>"><button class="follow-btn" data-user-id="<%= person._id %>">Unfollow</button></a>
-                    </div>
+    <% if(person.coverPhoto) { %>
+    <% const url = "/coverPhoto/" + person._id + "/" + person.coverPhoto %>
+    <div class="All-container">
+        <div class="user-profile">
+            <div class="user-cover-photo"
+                style="background-image: url(<%=url%>); opacity:1; background-repeat: no-repeat; background-size: contain; background-size: cover;">
+            </div>
+            <div class="user-info-box">
+                <div class="user-profile-photo">
+                    <img src="<%= person.profilePhoto %>" alt="Profile Photo" style="color: white;">
+                </div>
+
+                <div class="user-info">
+                    <h6 style="text-transform: uppercase; max-lines: 1; text-overflow: ellipsis;"><%= person.username %>
+                    </h6>
+                    <a href="/Unfollow/<%= person._id %>"><button class="follow-btn"
+                            data-user-id="<%= person._id %>">Unfollow</button></a>
                 </div>
             </div>
+        </div>
+    </div>
+    <% } else { %>
+    <div class="All-container">
+        <div class="user-profile">
+            <div class="user-cover-photo"
+                style="background-image: url('/assets/images/defaultCover/defaultCover.jpg');  background-repeat: no-repeat; background-size: contain; background-size: cover;">
+            </div>
+            <div class="user-info-box">
+                <div class="user-profile-photo">
+                    <img src="<%= person.profilePhoto %>" alt="Profile Photo" style="color: black;">
+                </div>
+                <div class="user-info">
+                    <h6 style="text-transform: uppercase; max-lines: 1; text-overflow: ellipsis;" ><%= person.username %></h6>
+                    <a href="/Unfollow/<%= person._id %>">
+                        <button class="follow-btn"
+                            data-user-id="<%= person._id %>">Unfollow</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
     <% }) %>
-    
-    
+
+
+
 </body>
+
 </html>

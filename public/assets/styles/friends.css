@@ -1,4 +1,4 @@
-body {
+/* body {
     margin: 0;
     padding: 0;
 }
@@ -64,4 +64,127 @@ body {
 .follow-btn:hover,
 .unfollow-btn:hover {
     background-color: #FF5733;
+} */
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.All-container{
+
+  border: 2px solid pink;
+  width: 30vw;
+  height: 40vh;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: inline-flex;
+ 
+  text-align: center;
+  box-shadow: 12px 5px 5px #2f3f67;
+  border-radius: 10px;
+  
+
+}
+
+.user-cover-photo{
+
+    width: 30vw;
+    height: 17vh;
+    border: 2px solid black;
+    border-radius: 10px;
+
+
+
+}
+
+.user-info-box{
+
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.user-info{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.follow-btn,
+.unfollow-btn {
+    padding: 5px 10px;
+    margin-right: 10px;
+    background-color: #0C193B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.follow-btn:hover,
+.unfollow-btn:hover {
+    background-color: #FF5733;
+}
+
+.user-profile-photo {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 10vw; /* Adjust the width based on viewport width */
+    height: 10vw; /* Set height relative to width for a circular shape */
+    max-width: 100px; /* Limit the maximum width */
+    max-height: 100px; /* Limit the maximum height */
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+/* Adjust styles for smaller screens */
+@media screen and (max-width: 768px) {
+    .user-profile-photo {
+        width: 15vw;
+        height: 15vw;
+        max-width: 75px;
+        max-height: 75px;
+    }
+}
+
+/* Adjust styles for even smaller screens */
+@media screen and (max-width: 480px) {
+    .All-container {
+        width: 90vw;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .user-cover-photo {
+        width: 100%;
+        height: auto;
+    }
+
+    .user-info-box {
+        margin: 2px;
+        flex-direction: column;
+    }
+
+    .user-info {
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+
+    .follow-btn,
+    .unfollow-btn {
+        padding: 3px 5px;
+        margin-right: 5px;
+        font-size: 12px;
+    }
+
+    .user-cover-photo {
+        width: 90vw;
+        height: 17vh;
+        border: 2px solid black;
+        background-size: cover; /* Ensure the background image covers the entire container */
+    }
+    
 }
