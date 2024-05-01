@@ -11,41 +11,6 @@ body {
     bottom: 70px;
 }
 
-.user-info {
-    width: 100%;
-    height: 10vh;
-    border-bottom: 1px solid black;
-    display: grid;
-    grid-template-rows: 50% 50%;
-}
-
-.container-mid {
-    box-shadow: 5px 1px 5px 5px #0C193B;
-    height: 90vh;
-    overflow: auto;
-    border: 1px solid black;
-    text-align: center;
-    border-radius: 12px;
-}
-
-.text-mid-area {
-    margin-top: 48px;
-}
-
-.photo-mid-icon {
-    margin-top: 38px;
-    height: 25vh;
-    width: 12vw;
-}
-
-
-.inner-container-mid {
-    width: 100%;
-    height: 70%;
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
 .section {
     display: grid;
     grid-template-columns: 25vw 49vw 25vw;
@@ -71,25 +36,83 @@ body {
     grid-column: 2;
     text-align: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    margin-top: 70px; /* Adjust this margin as needed */
 }
 
-@media (max-width: 768px) {
-    /* Hide left and right sections */
-    .left, .right {
-        display: none;
-    }
-    
-    /* Center the mid section */
-    .mid {
-        grid-column: 1 / -1; /* Span the entire width */
-    }
-
-    .photo-mid-icon{
-        width: 20vw;
-    }
-
-
+.photo-mid-icon {
+    margin-bottom: 20px;
+    height: 100px;
+    width: 100px;
 }
 
+.text-mid-area {
+    width: 100%;
+    height: 200px;
+    resize: none;
+    margin-bottom: 20px;
+}
 
+.btn-mid {
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-mid:hover {
+    background-color: #286090;
+}
+
+.post {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.post-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    margin: 0;
+}
+
+.author-name {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.post-content {
+    position: relative;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.post-description {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}

@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const postModel = require('../Models/post');
+const Users = require('../Models/user');
 const mongoose = require('mongoose');
 
 const ObjectId = mongoose.Types.ObjectId;

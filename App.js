@@ -82,7 +82,7 @@ app.get('/logout',(req,res)=>{
       console.log(err);
       return res.redirect('/');
     }
-    res.redirect('/signin');
+    res.redirect('/');
   })
 })
 
