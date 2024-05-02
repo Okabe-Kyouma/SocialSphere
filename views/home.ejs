@@ -33,36 +33,107 @@
             <% if(list && list.length > 0) { %>
             <% list.forEach(posts => { %>
             <% posts.forEach(post => { %>
+            <% if(String(post.author) === String(currentUser._id)){ %>
             <div class="post">
                 <div class="post-profile">
-                    <% if(String(post.author) === String(currentUser._id)){ %>
+                    <%if(currentUser.profilePhoto){ %>
                     <% const proUrl = "/profilePhoto/" + currentUser._id + "/" + currentUser.profilePhoto %>
                     <img src="<%=proUrl%>" alt="Profile Image">
-                    <% } else { %>
-                    <img src="/profilePhoto/<%= post.author %>/<%= post.profilePhoto %>" alt="Profile Image">
+                    <%} else { %>
+                    <img src="/assets/images/defaultProfile/defaultProfile.png" alt="Profile Image">
                     <%}%>
+                                    <!-- <% let pp = '' %>
+                    <% listOfUsersWithPosts.map(userFn => { %>
+                    <% if(userFn && String(userFn._id) === String(post.author)) { %>
+                    <% pp = userFn.profilePhoto %>
+                    <% } %>
+                    <% }) %>
+                    <% if(pp !== '') { %>
+                    <img src="/profilePhoto/<%= userFn.author %>/<%= userFn.profilePhoto %>" alt="Profile Image">
+                    <% } else { %>
+                    <img src="/assets/images/defaultProfile/defaultProfile.png" alt="Profile Image">
+                    <% } %> -->
                     <div class="profile-info">
-                        <% if(String(post.author) === String(currentUser._id)){ %>
                         <h6 class="author-name" style="text-transform: uppercase;"><%= currentUser.username %></h6>
-                        <% } else { %>
-                        <% console.log(`posssssssssssssssssssst username ${post.authorUsername}`) %>
-                        <h6 class="author-name" style="text-transform: uppercase;"><%= post.authorUsername %></h6>
-                        <% }%>
                     </div>
                 </div>
                 <div class="post-content">
                     <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image" alt="Post Image">
                     <p class="post-description"><%= post.postDescription %></p>
-                    <% if(String(post.author) === String(currentUser._id)){ %>
-                    <form action="/home/post/delete/<%= post._id %>" method="post">
-                        <button class="delete-btn" type="submit">Delete</button>
-                    </form>
-                    <% } %>
+                    <div class="interactions">
+                        <button class="like-btn">Like</button>
+                        <button class="comment-btn">Comment</button>
+                        <button class="dislike-btn">Dislike</button>
+                    </div>
                 </div>
+                <form action="/home/post/delete/<%= post._id %>" method="post">
+                    <button class="delete-btn" type="submit">Delete</button>
+                </form>
             </div>
+            <% }%>
             <% }) %>
             <% }) %>
             <% } %>
+
+
+
+
+
+            
+
+
+            <% if(list && list.length > 0) { %>
+                <% list.forEach(posts => { %>
+                <% posts.forEach(post => { %>
+                    <% listOfUsersWithPosts.map(userFn => { %>
+                <% if(userFn && String(userFn._id) === String(post.author)){ %>
+                <div class="post">
+                    <div class="post-profile">
+                        <%if(userFn.profilePhoto){ %>
+                        <% const proUrl = "/profilePhoto/" + userFn._id + "/" + userFn.profilePhoto %>
+                        <img src="<%=proUrl%>" alt="Profile Image">
+                        <%} else { %>
+                        <img src="/assets/images/defaultProfile/defaultProfile.png" alt="Profile Image">
+                        <%}%>
+                        <div class="profile-info">
+                            <h6 class="author-name" style="text-transform: uppercase;"><%= userFn.username %></h6>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image" alt="Post Image">
+                        <p class="post-description"><%= post.postDescription %></p>
+                        <div class="interactions">
+                            <button class="like-btn">Like</button>
+                            <button class="comment-btn">Comment</button>
+                            <button class="dislike-btn">Dislike</button>
+                        </div>
+                    </div>
+                </div>
+                <% }%>
+                <% }) %>
+     <% }) %>
+                <% }) %>
+                <% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
 
         <div class="right"></div>
