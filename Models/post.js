@@ -9,8 +9,13 @@ const postModel = new mongoose.Schema({
     authorUsername : String,
     postDescription : String,
     image: String,
-    likes: [String],
-    dislikes: [String],
+    likes: [{
+        personLiked: {
+            type: mongoose.Schema.ObjectId,
+            required: true,
+            ref: 'user',
+        }
+    }],
     comments: [
         {
             type : mongoose.Schema.ObjectId,

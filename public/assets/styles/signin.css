@@ -1,7 +1,8 @@
+/* Default styles */
 body {
     background-color: #0C193B;
-    color: #FFFFFF; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    color: #FFFFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -17,16 +18,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
+    height: 100vh;
 }
 
 .signin-form {
-    background-color: #FFFFFF; 
+    background-color: #FFFFFF;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 5px 2px 8px 8px #0C193B; 
+    box-shadow: 5px 2px 8px 8px #0C193B;
     max-width: 400px;
-    width: 90%; 
+    width: 90%;
 }
 
 .jump {
@@ -35,20 +36,20 @@ body {
 }
 
 .input-username,
-.input-password{
+.input-password {
     width: 100%;
     padding: 15px;
     margin: 10px 0;
     border: none;
     border-radius: 5px;
     box-sizing: border-box;
-    background-color: #F4F7F6; 
-    color: #333; 
-    outline: none; 
+    background-color: #F4F7F6;
+    color: #333;
+    outline: none;
 }
 
 .btn-signin {
-    background-color: #0C193B; 
+    background-color: #0C193B;
     color: #FFFFFF;
     padding: 15px;
     border: none;
@@ -57,24 +58,24 @@ body {
     width: 100%;
     font-size: 16px;
     transition: background-color 0.3s ease;
-    outline: none; 
+    outline: none;
 }
 
 .btn-signin:hover {
-    background-color: #FF5733; 
+    background-color: #FF5733;
 }
 
 .logo {
     width: 100px;
     height: 100px;
-    margin: 0 auto 20px; 
-    display: block; 
+    margin: 0 auto 20px;
+    display: block;
 }
 
 .label {
     font-weight: bold;
     margin-bottom: 5px;
-    display: block; 
+    display: block;
 }
 
 .link {
@@ -83,13 +84,13 @@ body {
 }
 
 .link a {
-    color: #0C193B; 
+    color: #0C193B;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .link a:hover {
-    color: #FF5733; 
+    color: #FF5733;
 }
 
 /* Media query for smaller screens */
@@ -98,7 +99,7 @@ body {
         padding: 0 15px; /* Add some padding to the container */
     }
 
-    form {
+    .signin-form {
         max-width: none; /* Remove the maximum width for smaller screens */
         width: 100%; /* Take up the full width of the container */
     }

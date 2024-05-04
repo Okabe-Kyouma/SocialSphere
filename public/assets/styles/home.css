@@ -1,165 +1,283 @@
 /* Default styles for larger screens */
 body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .home-form {
-    height: 63vh;
-    position: relative;
-    bottom: 70px;
+  height: 63vh;
+  position: relative;
+  bottom: 70px;
 }
 
 .section {
-    display: grid;
-    grid-template-columns: 25vw 49vw 25vw;
-    height: 100vh;
+  display: grid;
+  grid-template-columns: 25vw 49vw 25vw;
+  height: 100vh;
 }
 
 .left,
 .right {
-    background-color: #ffffff;
-    padding: 20px;
+  background-color: #ffffff;
+  padding: 20px;
 }
 
 .left {
-    border-right: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .right {
-    border-left: 1px solid black;
+  border-left: 1px solid black;
 }
 
 .mid {
-    padding: 20px;
-    grid-column: 2;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 70px; /* Adjust this margin as needed */
+  padding: 20px;
+  grid-column: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 70px; /* Adjust this margin as needed */
 }
 
 .photo-mid-icon {
-    margin-bottom: 20px;
-    height: 100px;
-    width: 100px;
+  margin-bottom: 20px;
+  height: 100px;
+  width: 100px;
 }
 
 .text-mid-area {
-    width: 100%;
-    height: 200px;
-    resize: none;
-    margin-bottom: 20px;
+  width: 100%;
+  height: 200px;
+  resize: none;
+  margin-bottom: 20px;
 }
 
 .btn-mid {
-    background-color: #337ab7;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 .btn-mid:hover {
-    background-color: #286090;
+  background-color: #286090;
 }
 
 .post {
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    padding: 10px;
-    position: relative;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+  position: relative;
+  box-shadow: 1px 5px 5px 12px #0c193b;
+  margin-top: 40px;
 }
 
 .post-profile {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .post-profile img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .profile-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .user-name {
-    margin: 0;
+  margin: 0;
 }
 
 .author-name {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
+  margin: 0;
+  font-size: 14px;
+  color: #666;
 }
 
 .post-content {
-    position: relative;
+  position: relative;
+  border: 5px solid #0c193b;
 }
 
 .post-image {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
 }
 
 .post-description {
-    margin-top: 10px;
-    font-size: 16px;
-    line-height: 1.5;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
 }
 
 .delete-btn {
-    background-color: #ff0000;
-    color: #ffffff;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
 }
 
 .delete-btn:hover {
-    background-color: #cc0000;
+  background-color: #cc0000;
 }
 
+.icon-heart.liked::before {
+  color: red; /* Change color for liked state */
+}
+
+.icon-thumbs-down.disliked::before {
+  color: blue; /* Change color for disliked state */
+}
+
+/* Rest of the styles */
 .interactions {
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    width: 100%;
+  text-align: center;
+  padding: 10px 0; /* Added padding */
+}
+
+.like-section,
+.dislike-section {
+  display: flex;
+  align-items: center;
 }
 
 .interactions button {
-    margin: 0 5px;
+  margin: 0 5px;
+  padding: 5px 10px; /* Added padding for buttons */
+  font-size: 1.5vh; /* Adjusted font size for responsiveness */
+}
+
+.comment-btn {
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
-    .left,
-    .right {
-        display: none; /* Hide left and right parts for smaller screens */
+  .left,
+  .right {
+    display: none; /* Hide left and right parts for smaller screens */
+  }
+
+  .icon-heart::before {
+    content: "\2665";
+    font-size: 5vh; /* Adjusted size for responsiveness */
+  }
+
+  .mid {
+    grid-column: 1 / -1; /* Span the entire width */
+    margin-top: 20px; /* Adjust margin for smaller screens */
+  }
+
+  .delete-btn {
+    bottom: 23px;
+  }
+
+  .home-form {
+    bottom: 25px; /* Adjust the position of the form */
+  }
+
+  /* Align heart and comment buttons in a single line */
+  .like-section,
+  .dislike-section {
+    flex: 1; /* Equal distribution of space */
+  }
+
+  .interactions button {
+    display: inline-block; /* Display buttons inline */
+  }
+}
+
+.block {
+  width: 90px;
+  height: 45px;
+  background: white;
+  border-radius: 9px;
+  box-shadow: 0 10px 25px rgba(124, 130, 141, 0.2);
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+  position: absolute;
+  top: 93%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  /* border: 1px solid #0C193B; */
+}
+@media (max-width: 575.9px) {
+    .block {
+      width: 80px;
+      height: 40px;
+      top: 89%;
     }
-    
-    .mid {
-        grid-column: 1 / -1; /* Span the entire width */
-        margin-top: 20px; /* Adjust margin for smaller screens */
+  
+    .block .heart-icon {
+      width: 15px; /* Adjusted size of the heart icon */
+      margin-top: -28px;
     }
-    
-    .home-form {
-        bottom: 20px; /* Adjust the position of the form */
+  
+  
+    .block .number-of-likes {
+      font-size: 15px;
+      user-select: none;
+      position: absolute;
+      left: 5%; /* Adjusted position to the left */
+      top: 50%;
+      transform: translateY(-50%);
     }
+  }
+  
+  
+.block .heart-icon {
+  user-select: none;
+  fill: transparent;
+  transition: transform 0.25s ease-out;
+  width: 30px;
+  margin-top: -28px;
+}
+
+/* initial state of the like heart button */
+
+.block .heart-icon .fill-color-shape {
+  fill: transparent;
+}
+
+.block .heart-icon.isLiked {
+  filter: drop-shadow(0 3px 5px #c44133);
+}
+
+/* "liked" state of the like heart button */
+
+.block .heart-icon.isLiked .fill-color-shape {
+  transition: fill 0.5s linear;
+  fill: #e74c3c;
+}
+
+/* .block .heart-icon:hover {
+    transform: translate(-20%, calc(-50% - 3px)) scale(1.03);
+  } */
+.block .number-of-likes {
+  font-size: 40x;
+  user-select: none;
+  position: absolute;
+  left: 80%;
+  top: 53%;
+  transform: translate(-80%, -50%);
+  color: #292d34;
 }

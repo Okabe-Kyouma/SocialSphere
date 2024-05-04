@@ -15,7 +15,7 @@ const ObjectId = mongoose.Types.ObjectId;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const userId = req.user._id.toString(); // Convert ObjectId to string
+        const userId = req.user._id.toString(); 
         const uploadDir = path.join(__dirname, '../public/coverPhoto', userId);
         fs.stat(uploadDir, (err, stats) => {
             if (err || !stats.isDirectory()) {
