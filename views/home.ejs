@@ -42,17 +42,6 @@
                     <%} else { %>
                     <img src="/assets/images/defaultProfile/defaultProfile.png" alt="Profile Image">
                     <%}%>
-                                    <!-- <% let pp = '' %>
-                    <% listOfUsersWithPosts.map(userFn => { %>
-                    <% if(userFn && String(userFn._id) === String(post.author)) { %>
-                    <% pp = userFn.profilePhoto %>
-                    <% } %>
-                    <% }) %>
-                    <% if(pp !== '') { %>
-                    <img src="/profilePhoto/<%= userFn.author %>/<%= userFn.profilePhoto %>" alt="Profile Image">
-                    <% } else { %>
-                    <img src="/assets/images/defaultProfile/defaultProfile.png" alt="Profile Image">
-                    <% } %> -->
                     <div class="profile-info">
                         <h6 class="author-name" style="text-transform: uppercase;"><%= currentUser.username %></h6>
                     </div>
@@ -245,6 +234,9 @@ const likeClick = (index) => {
     
     const postId = likeBtn.dataset.postId; 
     // const url = isLiked ? `/post/dislike/${postId}` : `/post/like/${postId}`;
+
+    console.log(`ppppppppppppppppppppppppppppppppppppppppppppost id im getting: ${postId}`);
+
     const url = `/post/like/${postId}`;
 
     // AJAX request

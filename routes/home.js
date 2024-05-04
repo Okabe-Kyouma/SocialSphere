@@ -130,24 +130,45 @@ router.post("/post/like/:postId", async (req, res) => {
   if (req.isAuthenticated()) {
     try {
       const { postId } = req.params;
+      console.log(`pppppppppppppppppppppppppppppppppppppppppppppppppppost id i got ${postId}`);
       const userId = req.user._id;
+      console.log(`pppppppppppppppppppppppppppppppppppppppppppppppppppost userid i got ${userId}`);
       const ObjectIdUserId = new ObjectId(userId);
       const post = await postModel.findById(postId);
       if (!post) {
         return res.status(404).json({ message: "Post not found" });
       }
 
+      var getter = 'no';
+
+      post.likes.forEach(element => {
+
+
+
+        console.log(`${element.personLiked} and userId ${ObjectIdUserId}`);
+
+        if(element.personLiked.equals(ObjectIdUserId)){
+            getter = 'yes';
+            console.log('getter value ' + getter);
+        }
         
-     const user = await postModel.findOne({'likes.personLiked' : userId});
+      });
+
+      console.log(`the persons: ${post.likes.personLiked} and the userId ${userId}`);
+        
+     const user  = post.likes.find(like => like.personLiked === new ObjectId(userId));
 
      console.log(`aree vaii user mil gya phenchoo!! ${user} is id sai h: ${ObjectIdUserId}`);
 
-     if(user==null){
+     if(getter==='no'){
         post.likes.push({personLiked:req.user._id});
         await post.save();
         // res.status(200).send('Post liked');
+        console.log("this working.");
      }
      else{
+
+        console.log("that workking.");
 
         const result = await postModel.updateOne(
             { _id: postId },
