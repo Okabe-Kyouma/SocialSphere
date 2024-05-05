@@ -18,8 +18,12 @@ const postModel = new mongoose.Schema({
     }],
     comments: [
         {
+            personCommented : {
             type : mongoose.Schema.ObjectId,
             ref: 'comment'
+            },
+            comment : String,
+            uuid : String,
         },
     ],
 });
