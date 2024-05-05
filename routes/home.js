@@ -130,9 +130,7 @@ router.post("/post/like/:postId", async (req, res) => {
   if (req.isAuthenticated()) {
     try {
       const { postId } = req.params;
-      console.log(`pppppppppppppppppppppppppppppppppppppppppppppppppppost id i got ${postId}`);
       const userId = req.user._id;
-      console.log(`pppppppppppppppppppppppppppppppppppppppppppppppppppost userid i got ${userId}`);
       const ObjectIdUserId = new ObjectId(userId);
       const post = await postModel.findById(postId);
       if (!post) {
@@ -143,54 +141,32 @@ router.post("/post/like/:postId", async (req, res) => {
 
       post.likes.forEach(element => {
 
-
-
-        console.log(`${element.personLiked} and userId ${ObjectIdUserId}`);
-
         if(element.personLiked.equals(ObjectIdUserId)){
             getter = 'yes';
-            console.log('getter value ' + getter);
         }
         
       });
 
-      console.log(`the persons: ${post.likes.personLiked} and the userId ${userId}`);
-        
-     const user  = post.likes.find(like => like.personLiked === new ObjectId(userId));
-
-     console.log(`aree vaii user mil gya phenchoo!! ${user} is id sai h: ${ObjectIdUserId}`);
-
      if(getter==='no'){
         post.likes.push({personLiked:req.user._id});
         await post.save();
-        // res.status(200).send('Post liked');
-        console.log("this working.");
+        res.status(200).send('Post liked');
      }
      else{
-
-        console.log("that workking.");
 
         const result = await postModel.updateOne(
             { _id: postId },
             { $pull: { likes: { personLiked: new ObjectId(userId) } } }
         );
         if (result.nModified === 1) {
-            console.log("User's like removed successfully.");
-            // res.status(200).send('Post unliked');
+            res.status(200).send('ok');
         } else {
-            console.log("Post or user not found, or user's like not removed.");
+            res.status(200).send('ok');
         }
 
      }
 
      
-
-
-
-      
-    //   post.likes.push({ personLiked: req.user._id });
-    //   await post.save();
-      res.sendStatus(200);
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
