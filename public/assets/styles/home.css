@@ -402,3 +402,48 @@ body {
   width: 100%;
   border: 1px solid black;
 }
+
+
+
+
+
+
+
+
+/* Style for comments */
+.comment {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.comment p {
+  margin: 0;
+}
+
+.comment p.username {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Style for delete button */
+.delete-btn {
+  background-color: #ff6347; /* Red */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000; /* Darker Red */
+}
+
+/* Responsive styling */
+@media only screen and (max-width: 600px) {
+  .comment {
+    padding: 5px;
+  }
+}

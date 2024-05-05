@@ -19,13 +19,11 @@ body {
    
 }
 
-
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; 
-   
 }
 
 .signup-form {
@@ -95,4 +93,29 @@ body {
 
 .link a:hover {
     color: #FF5733; 
+}
+
+
+@media only screen and (max-width: 600px) {
+    .signup-form {
+        padding: 30px;
+        max-width: 300px;
+        width: 90%;
+    }
+
+    .input-signup-email,
+    .input-signup-username,
+    .input-signup-password {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .signup-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .label {
+        font-size: 14px;
+    }
 }

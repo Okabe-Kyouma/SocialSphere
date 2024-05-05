@@ -25,10 +25,13 @@ router.get('/signup',(req,res)=>{
 
     }
 
+    req.flash('user',"Wrong Email or password");
+         ans = req.flash('user');
+
     res.render('signup',{ans});
 })
 
-router.post('/signin',passport.authenticate("local"),(req,res)=>{
+router.post('/signin',passport.authenticate("local",{ failureRedirect: '/signup',failureFlash:true}),(req,res)=>{
 
         return res.redirect('/home');
 
