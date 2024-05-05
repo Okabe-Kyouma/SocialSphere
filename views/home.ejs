@@ -78,7 +78,30 @@
                   <span class="close">&times;</span>
                   <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
                   <div class="box">
-                    
+
+                    <h6 style="text-transform: uppercase; text-decoration: underline;">Comments</h6>
+                    <% if(post.comments.length === 0) { %>
+                      <h5>No Comments Found!</h5>
+                    <% } else { %>
+                      <% post.comments.forEach(comment => { %>
+                        <div class="comment">
+                            <p style="font-weight: bold;"><%= comment.username %>:</p>
+                          <p><%= comment.comment %></p>
+
+                          <% if(String(comment.personCommented) === String(currentUser._id)) { %>
+                            <form action="/comment/delete/<%= comment.uuid %>" method="post">
+                              <button type="submit">Delete</button>
+                            </form>
+                          <% } %>
+                        </div>
+                      <% }) %>
+                    <% } %>
+                    <!-- Add comment form -->
+                    <form action="/comment/<%= post._id %>" method="post">
+                      <textarea name="comment" cols="30" rows="2" placeholder="Add a comment..."></textarea>
+                      <button type="submit">Add Comment</button>
+                    </form>
+
                   </div>
               </div>
           </div>
@@ -149,7 +172,31 @@
               <div class="modal-content">
                   <span class="close">&times;</span>
                   <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
-                  <div class="box"></div>
+                  <div class="box">
+
+                    <h6 style="text-transform: uppercase; text-decoration: underline;">Comments</h6>
+                    <% if(post.comments.length === 0) { %>
+                      <h5>No Comments Found!</h5>
+                    <% } else { %>
+                      <% post.comments.forEach(comment => { %>
+                       
+                        <div class="comment">
+                          
+                            <p style="font-weight: bold;"><%= comment.username %>:</p>
+                         
+                          <p><%= comment.comment %></p>
+                         
+                        </div>
+                      <% }) %>
+                    <% } %>
+                   
+                    <form action="/comment/<%= post._id %>" method="post">
+                      <textarea name="comment" cols="30" rows="2" placeholder="Add a comment..."></textarea>
+                      <button type="submit">Add Comment</button>
+                    </form>
+
+
+                  </div>
               </div>
           </div>
       </div>

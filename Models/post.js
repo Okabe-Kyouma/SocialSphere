@@ -23,6 +23,7 @@ const postModel = new mongoose.Schema({
             ref: 'comment'
             },
             comment : String,
+            username : String,
             uuid : String,
         },
     ],

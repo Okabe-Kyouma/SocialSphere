@@ -1,75 +1,81 @@
-const router = require('express').Router();
-const bodyParser = require('body-parser');
-const postModel = require('../Models/post');
-const userModel = require('../Models/user');
-const { v4: uuidv4 } = require('uuid');
+const router = require("express").Router();
+const bodyParser = require("body-parser");
+const postModel = require("../Models/post");
+const userModel = require("../Models/user");
+const { v4: uuidv4 } = require("uuid");
 
+router.post("/comment/:id", async (req, res) => {
+  if (req.isAuthenticated()) {
+    const postId = req.params.id;
+    const { comment } = req.body;
 
+    console.log(`the comment is : ${comment} and the postId is ${postId}`);
 
-router.post('/comment/:id', async (req, res) => {
-    if (req.isAuthenticated()) {
-  
-        const postId = req.params.id;
-        const { comment } = req.body;
+    try {
+      const post = await postModel.findById(postId);
+      if (!post) {
+        console.log("Post not found");
+        return res.redirect("/home");
+      }
 
-        console.log(`the comment is : ${comment} and the postId is ${postId}`);
+      const user = req.user;
 
-        try {
-            const post = await postModel.findById(postId);
-            if (!post) {
-                console.log("Post not found");
-                return res.redirect('/home');
-            }
+      if (!user) {
+        console.log("User not found");
+        return res.redirect("/home");
+      }
 
-            const user = req.user;
+      const uuid = uuidv4();
+      const username = req.user.username;
 
-            if (!user) {
-                console.log("User not found");
-                return res.redirect('/home');
-            }
+      console.log(username);
 
-            const uuid = uuidv4();
-
-            post.comments.push({ personCommented: user._id, comment,uuid});
-            await post.save();
-            console.log("Comment added successfully");
-            res.redirect('/home');
-        } catch (error) {
-            console.log(error);
-            res.redirect('/home');
-        }
-    } else {
-        res.redirect('/');
+      post.comments.push({
+        personCommented: user._id,
+        comment,
+        username,
+        uuid,
+      });
+      await post.save();
+      console.log("Comment added successfully");
+      res.redirect("/home");
+    } catch (error) {
+      console.log(error);
+      res.redirect("/home");
     }
+  } else {
+    res.redirect("/");
+  }
 });
 
+router.post("/comment/delete/:uuid", async (req, res) => {
+  if (req.isAuthenticated()) {
+    try {
+      const commentUuid = req.params.uuid;
 
-router.put('/comment/edit/:id', (req, res) => {
-	const commentId = req.params.id;
-	const { editComment } = req.body;
+      const post = await postModel.findOne({ "comments.uuid": commentUuid });
 
-	commentModel.findByIdAndUpdate(commentId, { text: editComment }, (err, updatedComment) => {
-		if (err) {
-			console.log(err);
-			res.redirect('/home')
-		} else {
-			console.log('you comment is updated ');
-			res.redirect('/home');
-		}
-	});
-});
+      if (!post) {
+        return res.status(404).json({ error: "Comment not found" });
+      }
 
-router.delete('/comment/delete/:id', (req, res) => {
-	const commentId = req.params.id;
-	commentModel.findByIdAndDelete(commentId, (err, deletedComment) => {
-		if (err) {
-			console.log(err);
-			res.redirect('/home')
-		} else {
-			console.log('comment deleted');
-			res.redirect('/home');
-		}
-	});
+      const commentIndex = post.comments.findIndex(
+        (comment) => comment.uuid === commentUuid
+      );
+
+      if (commentIndex === -1) {
+        return res.status(404).json({ error: "Comment not found" });
+      }
+
+      post.comments.splice(commentIndex, 1);
+      await post.save();
+
+      res.redirect("/home");
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  }
 });
 
 module.exports = router;
