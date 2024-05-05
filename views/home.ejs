@@ -72,7 +72,15 @@
             <span class="number-of-likes"><%= post.likes.length %></span>
 
           </div>
-          <button class="comment-btn">Comment</button>
+          <button class="comment-btn" data-post-id="<%= post._id %>">Comment</button>
+          <div id="myModal-<%= post._id %>" class="modal">
+              <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
+                  <div class="box"></div>
+              </div>
+          </div>
+          
         </div>
       </div>
       <form action="/home/post/delete/<%= post._id %>" method="post">
@@ -134,7 +142,14 @@
           <span class="number-of-likes"><%= post.likes.length %></span>
 
         </div>
-        <button class="comment-btn">Comment</button>
+        <button class="comment-btn" data-post-id="<%= post._id %>">Comment</button>
+          <div id="myModal-<%= post._id %>" class="modal">
+              <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
+                  <div class="box"></div>
+              </div>
+          </div>
       </div>
     </div>
     </div>

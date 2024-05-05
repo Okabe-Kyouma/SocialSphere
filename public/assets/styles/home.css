@@ -281,3 +281,100 @@ body {
   transform: translate(-80%, -50%);
   color: #292d34;
 }
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px; /* Set a maximum width */
+    overflow: auto; /* Enable scroll if needed */
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.post-image-comment {
+    max-height: 50vh; /* Set a maximum height for the image */
+    width: auto;
+}
+
+.box {
+    height: 500px; /* Adjust this height as needed */
+    width: 100%;
+    border: 1px solid black;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px; /* Set a maximum width */
+  overflow: auto; /* Enable scroll if needed */
+  max-height: calc(100% - 40px); /* Adjust based on the padding and border */
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.post-image-comment {
+  max-height: 50vh; /* Set a maximum height for the image */
+  width: auto;
+}
+
+.box {
+  height: 500px; /* Adjust this height as needed */
+  width: 100%;
+  border: 1px solid black;
+}

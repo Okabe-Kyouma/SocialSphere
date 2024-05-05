@@ -85,3 +85,26 @@ document.querySelector('.heart-icon').addEventListener('click', function () {
   }
 
 });
+
+
+
+document.querySelectorAll(".comment-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+        const postId = this.getAttribute("data-post-id");
+        const modal = document.getElementById(`myModal-${postId}`);
+        modal.style.display = "block";
+    });
+});
+
+document.querySelectorAll(".close").forEach(closeBtn => {
+    closeBtn.addEventListener("click", function() {
+        const modal = this.closest(".modal");
+        modal.style.display = "none";
+    });
+});
+
+window.onclick = function(event) {
+    if (event.target.classList.contains("modal")) {
+        event.target.style.display = "none";
+    }
+};
