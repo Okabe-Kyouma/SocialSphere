@@ -137,3 +137,131 @@ body {
 .delete-post-btn:hover {
     background-color: #ff3333;
 }
+
+
+
+.block {
+    width: 90px;
+    height: 45px;
+    background: white;
+    border-radius: 9px;
+    box-shadow: 0 10px 25px rgba(124, 130, 141, 0.2);
+    cursor: pointer;
+    transition: all 0.25s ease-out;
+    position: absolute;
+    top: 97%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* .block {
+    width: 90px;
+    height: 45px;
+    background: white;
+    border-radius: 9px;
+    box-shadow: 0 10px 25px rgba(124, 130, 141, 0.2);
+    cursor: pointer;
+    transition: all 0.25s ease-out;
+    position: absolute;
+    top: 97%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+/* Adjustments for smaller screens */
+@media (max-width: 575.9px) {
+    .block {
+        width: 80px;
+        height: 40px;
+        top: 89%; /* Adjusted position */
+    }
+    .interactions {
+        justify-content: right;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 728px) {
+    .block {
+        width: 80px;
+        height: 40px;
+        top: 95.5%; /* Adjusted position */
+        left: 26%;
+    }
+      
+.block .heart-icon {
+    user-select: none;
+    fill: transparent;
+    transition: transform 0.25s ease-out;
+    width: 30px;
+    margin-top: -21px;
+    margin-left: 12px;
+  }
+}
+
+
+  
+.block .heart-icon {
+    user-select: none;
+    fill: transparent;
+    transition: transform 0.25s ease-out;
+    width: 30px;
+    margin-top: -24px;
+    margin-left: 12px;
+  }
+  
+  /* initial state of the like heart button */
+  
+  .block .heart-icon .fill-color-shape {
+    fill: transparent;
+  }
+  
+  .block .heart-icon.isLiked {
+    filter: drop-shadow(0 3px 5px #c44133);
+  }
+  
+  /* "liked" state of the like heart button */
+  
+  .block .heart-icon.isLiked .fill-color-shape {
+    transition: fill 0.5s linear;
+    fill: #e74c3c;
+  }
+  
+  /* .block .heart-icon:hover {
+      transform: translate(-20%, calc(-50% - 3px)) scale(1.03);
+    } */
+  .block .number-of-likes {
+    font-size: 40x;
+    user-select: none;
+    position: absolute;
+    left: 80%;
+    top: 53%;
+    transform: translate(-80%, -50%);
+    color: #292d34;
+  }
+  
+
+  @media (max-width: 575.9px) {
+    .block {
+      width: 80px;
+      height: 40px;
+      top: 94%; 
+      left: 13%; 
+      transform: translate(-50%, -50%); 
+    }
+  
+    .block .heart-icon {
+      width: 15px; 
+      margin-top: -28px;
+    }
+  
+    .block .number-of-likes {
+      font-size: 15px;
+      user-select: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  

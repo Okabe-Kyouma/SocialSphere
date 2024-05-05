@@ -32,7 +32,7 @@
 
       <% if(list && list.length > 0) { %>
       <% list.reverse().forEach(posts => { %>
-      <% posts.forEach(post => { %>
+      <% posts.reverse().forEach(post => { %>
       <% if(String(post.author) === String(currentUser._id)){ %>
       <div class="post">
         <div class="post-profile">
@@ -93,7 +93,7 @@
 
     <% if(list && list.length > 0) { %>
     <% list.reverse().forEach(posts => { %>
-    <% posts.forEach(post => { %>
+    <% posts.reverse().forEach(post => { %>
     <% listOfUsersWithPosts.map(userFn => { %>
     <% if(userFn && String(userFn._id) === String(post.author)){ %>
     <div class="post">
@@ -221,7 +221,6 @@
     });
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Fetch liked posts
       fetch("/liked-posts")
         .then(response => {
           if (!response.ok) {
