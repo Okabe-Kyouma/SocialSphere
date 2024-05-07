@@ -4,7 +4,8 @@ const passport = require('passport');
 exports.connectMongoose = () => {
 
 
-     mongoose.connect('mongodb://0.0.0.0:27017/Social-Sphere')
+    // 
+    mongoose.connect('mongodb+srv://ayushpal5432:WoPkiD79P6YFsXDn@socialsphere.kkmzxcw.mongodb.net/?retryWrites=true&w=majority&appName=Socialsphere')
      .then(e=>console.log("Mongodb Connected"))
      .catch(e=>console.log(`${e} error`));
 
