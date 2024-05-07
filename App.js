@@ -5,6 +5,7 @@ const allRoute = require('./routes/allUsers');
 const friendRoute = require('./routes/friends');
 const profileRoute = require('./routes/profile');
 const commentRoute = require('./routes/comment');
+const trendingRoute = require('./routes/trending');
 const path = require('path');
 const passport = require('passport');
 const {connectMongoose} = require('./Models/user');
@@ -55,6 +56,7 @@ app.use('/',allRoute);
 app.use('/',friendRoute);
 app.use('/',profileRoute);
 app.use('/',commentRoute);
+app.use('/',trendingRoute);
 
 
 app.get('/', async (req, res) => {

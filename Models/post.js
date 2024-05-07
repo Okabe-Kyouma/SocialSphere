@@ -14,6 +14,10 @@ const postModel = new mongoose.Schema({
             type: mongoose.Schema.ObjectId,
             required: true,
             ref: 'user',
+        },
+        likedAt: {
+            type: Date,
+            default: Date.now
         }
     }],
     comments: [

@@ -33,11 +33,6 @@
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .icon-link img {
-        width: 20px; /* Reduce the size of icons on smaller screens */
-    }
-}
 
 .icon-container {
     display: flex;
@@ -54,13 +49,26 @@
 }
 
 .icon-link img {
-    width: 30px; /* Set the width of the icons */
+    width: 30px; 
     height: auto; /* Maintain aspect ratio */
     cursor: pointer;
 }
 
 @media (max-width: 768px) {
     .icon-link img {
-        width: 20px; /* Reduce the size of icons on smaller screens */
+        width: 18px; /* Reduce the size of icons on smaller screens */
+    }
+    .icon-label{
+        font-size: 10px;
+    }
+}
+
+
+@media (max-width: 568px) {
+    .icon-link img {
+        width: 15px; /* Reduce the size of icons on smaller screens */
+    }
+    .icon-label{
+        font-size: 8px;
     }
 }
