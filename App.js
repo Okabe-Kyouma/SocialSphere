@@ -90,6 +90,8 @@ app.get('/logout',(req,res)=>{
   })
 })
 
-app.listen(4000,()=>{
+const port = process.env.PORT || 4000;
+
+app.listen(port,()=>{
     console.log("Server Started at port 4000");
 })

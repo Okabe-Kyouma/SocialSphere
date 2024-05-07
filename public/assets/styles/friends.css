@@ -79,7 +79,7 @@ body {
     margin-left: 10px;
 }
 
-
+/* 
 @media screen and (max-width: 768px) {
     .user-profile-photo {
         width: 15vw;
@@ -87,10 +87,10 @@ body {
         max-width: 75px;
         max-height: 75px;
     }
-}
+} */
 
 /* Adjust styles for even smaller screens */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     .All-container {
         width: 90vw;
         height: auto;
