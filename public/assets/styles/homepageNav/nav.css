@@ -1,7 +1,7 @@
 .navbar {
-    display: flex; /* Use flexbox to arrange icons horizontally */
-    justify-content: space-around; /* Add space between icons */
-    align-items: center; /* Center icons vertically */
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
    width:  85vw;
    margin-left: 10px;
    z-index: 10000;
@@ -19,17 +19,17 @@
 }
 
 .icon-link {
-    /* margin-right: 20px;  */
+   
     text-align: center;
 }
 
 .icon-link:last-child {
-    margin-right: 0; /* Remove margin from the last icon */
+    margin-right: 0; 
 }
 
 .icon-link img {
-    width: 30px; /* Set the width of the icons */
-    height: auto; /* Maintain aspect ratio */
+    width: 30px; 
+    height: auto; 
     cursor: pointer;
 }
 
@@ -50,13 +50,13 @@
 
 .icon-link img {
     width: 30px; 
-    height: auto; /* Maintain aspect ratio */
+    height: auto; 
     cursor: pointer;
 }
 
 @media (max-width: 768px) {
     .icon-link img {
-        width: 18px; /* Reduce the size of icons on smaller screens */
+        width: 18px; 
     }
     .icon-label{
         font-size: 10px;
@@ -66,7 +66,7 @@
 
 @media (max-width: 568px) {
     .icon-link img {
-        width: 15px; /* Reduce the size of icons on smaller screens */
+        width: 15px; 
     }
     .icon-label{
         font-size: 8px;

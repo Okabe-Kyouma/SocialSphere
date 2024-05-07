@@ -12,6 +12,12 @@
 
     <%- include('C:/Users/Hp/Desktop/Project/views/homepageNav.ejs') %>
 
+    <% if (friendArray.length === 0) { %>
+    <div class="Big" style="text-align: center;">
+        <h1>No Friends Found! Follow Some People in Suggestions!</h1>
+    </div>
+    <% } else { %>
+
     <% friendArray.forEach(person => { %>
     <% if(person.coverPhoto) { %>
     <% const url = "/coverPhoto/" + person._id + "/" + person.coverPhoto %>
@@ -66,8 +72,7 @@
     </div>
     <% } %>
     <% }) %>
-
-
+    <% } %>
 
 </body>
 

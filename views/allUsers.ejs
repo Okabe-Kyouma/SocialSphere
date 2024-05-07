@@ -16,45 +16,6 @@
 
     <%- include('C:/Users/Hp/Desktop/Project/views/homepageNav.ejs') %>
 
-    <!-- <% people.forEach(person => { %>
-        <% if (!currentUser.friends.includes(person._id)) { %>
-            <% if(person.coverPhoto) { %>
-                <% const url = "/coverPhoto/" + person._id + "/" + person.coverPhoto %>
-                <div class="All-container" style="background-image: url(<%=url%>); opacity:0.8;">
-                    <div class="user-profile">
-                        <div class="user-photo">
-                            <img src="<%= person.profilePhoto %>" alt="Profile Photo">
-                        </div>
-                        <div class="user-details">
-                            <h2><%= person.username %></h2>
-                        </div>
-                        <div class="user-actions">
-                            <a href="/follow/<%= person._id %>">
-                                <button class="follow-btn" data-user-id="<%= person._id %>">Follow</button>
-                            </a>
-                        </div>
-                    </div>
-                    </div>
-            <% } else { %>
-                <div class="All-container">
-                <div class="user-profile">
-                    <div class="user-photo">
-                        <img src="<%= person.profilePhoto %>" alt="Profile Photo">
-                    </div>
-                    <div class="user-details">
-                        <h2><%= person.username %></h2>
-                    </div>
-                    <div class="user-actions">
-                        <a href="/follow/<%= person._id %>">
-                            <button class="follow-btn" data-user-id="<%= person._id %>">Follow</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <% } %>
-        <% } %>
-    <% }) %> -->
-
     <% people.forEach(person => { %>
     <% if (!currentUser.friends.includes(person._id)) { %>
     <% if(person.coverPhoto) { %>

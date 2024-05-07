@@ -52,13 +52,13 @@
         <div class="interactions">
           <div class="block">
 
-            <!-- heart shape SVG -->
+
 
             <svg class="heart-icon" width="106" height="97" viewBox="0 0 106 97" fill="none"
               xmlns="http://www.w3.org/2000/svg" data-post-id="<%= post._id %>">
 
 
-              <!-- I am working with <path>, not the whole <svg> -->
+
 
               <path class="fill-color-shape" fill-rule="evenodd" clip-rule="evenodd"
                 d="M73.0406 3.04949C65.7359 2.94379 58.3559 5.38824 53.2483 12.3801C48.1271 5.39042 40.631 3.04941 33.4677 3.04941C18.2587 3.04941 3.04622 15.7081 3.04622 33.4698C3.04622 51.0995 14.3683 66.123 26.1679 76.6801C32.0812 81.9708 38.1493 86.1719 43.0557 89.0533C45.5086 90.4938 47.6791 91.6092 49.402 92.3672C50.2628 92.7459 51.0206 93.0393 51.6517 93.2395C52.2639 93.4336 52.8188 93.5607 53.2487 93.5607C53.6786 93.5607 54.2336 93.4336 54.8458 93.2395C55.4769 93.0393 56.2347 92.7459 57.0955 92.3672C58.8183 91.6092 60.9889 90.4938 63.4418 89.0533C68.3481 86.1719 74.4162 81.9708 80.3295 76.6801C92.1292 66.1229 103.451 51.0995 103.451 33.4698C103.451 15.6993 88.2313 3.26928 73.0406 3.04949Z" />
@@ -68,44 +68,44 @@
             </svg>
 
 
-            <!-- counter -->
+            
             <span class="number-of-likes"><%= post.likes.length %></span>
 
           </div>
           <button class="comment-btn" data-post-id="<%= post._id %>">Comments</button>
           <div id="myModal-<%= post._id %>" class="modal">
-              <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
-                  <div class="box">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
+              <div class="box">
 
-                    <h6 style="text-transform: uppercase; text-decoration: underline;">Comments</h6>
-                    <% if(post.comments.length === 0) { %>
-                      <h5>No Comments Found!</h5>
-                    <% } else { %>
-                      <% post.comments.forEach(comment => { %>
-                        <div class="comment">
-                            <p style="font-weight: bold;"><%= comment.username %>:</p>
-                          <p><%= comment.comment %></p>
+                <h6 style="text-transform: uppercase; text-decoration: underline;">Comments</h6>
+                <% if(post.comments.length === 0) { %>
+                <h5>No Comments Found!</h5>
+                <% } else { %>
+                <% post.comments.forEach(comment => { %>
+                <div class="comment">
+                  <p style="font-weight: bold;"><%= comment.username %>:</p>
+                  <p><%= comment.comment %></p>
 
-                          <% if(String(comment.personCommented) === String(currentUser._id)) { %>
-                            <form action="/comment/delete/<%= comment.uuid %>" method="post">
-                              <button type="submit">Delete</button>
-                            </form>
-                          <% } %>
-                        </div>
-                      <% }) %>
-                    <% } %>
-                    <!-- Add comment form -->
-                    <form action="/comment/<%= post._id %>" method="post">
-                      <textarea name="comment" cols="30" rows="2" placeholder="Add a comment..."></textarea>
-                      <button type="submit">Add Comment</button>
-                    </form>
+                  <% if(String(comment.personCommented) === String(currentUser._id)) { %>
+                  <form action="/comment/delete/<%= comment.uuid %>" method="post">
+                    <button type="submit">Delete</button>
+                  </form>
+                  <% } %>
+                </div>
+                <% }) %>
+                <% } %>
+               
+                <form action="/comment/<%= post._id %>" method="post">
+                  <textarea name="comment" cols="30" rows="2" placeholder="Add a comment..."></textarea>
+                  <button type="submit">Add Comment</button>
+                </form>
 
-                  </div>
               </div>
+            </div>
           </div>
-          
+
         </div>
       </div>
       <form action="/home/post/delete/<%= post._id %>" method="post">
@@ -147,13 +147,13 @@
       <div class="interactions">
         <div class="block">
 
-          <!-- heart shape SVG -->
+        
 
           <svg class="heart-icon" width="106" height="97" viewBox="0 0 106 97" fill="none"
             xmlns="http://www.w3.org/2000/svg" data-post-id="<%= post._id %>">
 
 
-            <!-- I am working with <path>, not the whole <svg> -->
+           
 
             <path class="fill-color-shape" fill-rule="evenodd" clip-rule="evenodd"
               d="M73.0406 3.04949C65.7359 2.94379 58.3559 5.38824 53.2483 12.3801C48.1271 5.39042 40.631 3.04941 33.4677 3.04941C18.2587 3.04941 3.04622 15.7081 3.04622 33.4698C3.04622 51.0995 14.3683 66.123 26.1679 76.6801C32.0812 81.9708 38.1493 86.1719 43.0557 89.0533C45.5086 90.4938 47.6791 91.6092 49.402 92.3672C50.2628 92.7459 51.0206 93.0393 51.6517 93.2395C52.2639 93.4336 52.8188 93.5607 53.2487 93.5607C53.6786 93.5607 54.2336 93.4336 54.8458 93.2395C55.4769 93.0393 56.2347 92.7459 57.0955 92.3672C58.8183 91.6092 60.9889 90.4938 63.4418 89.0533C68.3481 86.1719 74.4162 81.9708 80.3295 76.6801C92.1292 66.1229 103.451 51.0995 103.451 33.4698C103.451 15.6993 88.2313 3.26928 73.0406 3.04949Z" />
@@ -163,42 +163,42 @@
           </svg>
 
 
-          <!-- counter -->
+         
           <span class="number-of-likes"><%= post.likes.length %></span>
 
         </div>
         <button class="comment-btn" data-post-id="<%= post._id %>">Comments</button>
-          <div id="myModal-<%= post._id %>" class="modal">
-              <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
-                  <div class="box">
+        <div id="myModal-<%= post._id %>" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
+            <div class="box">
 
-                    <h6 style="text-transform: uppercase; text-decoration: underline;">Comments</h6>
-                    <% if(post.comments.length === 0) { %>
-                      <h5>No Comments Found!</h5>
-                    <% } else { %>
-                      <% post.comments.forEach(comment => { %>
-                       
-                        <div class="comment">
-                          
-                            <p style="font-weight: bold;"><%= comment.username %>:</p>
-                         
-                          <p><%= comment.comment %></p>
-                         
-                        </div>
-                      <% }) %>
-                    <% } %>
-                   
-                    <form action="/comment/<%= post._id %>" method="post">
-                      <textarea name="comment" cols="30" rows="2" placeholder="Add a comment..."></textarea>
-                      <button type="submit">Add Comment</button>
-                    </form>
+              <h6 style="text-transform: uppercase; text-decoration: underline;">Comments</h6>
+              <% if(post.comments.length === 0) { %>
+              <h5>No Comments Found!</h5>
+              <% } else { %>
+              <% post.comments.forEach(comment => { %>
 
+              <div class="comment">
 
-                  </div>
+                <p style="font-weight: bold;"><%= comment.username %>:</p>
+
+                <p><%= comment.comment %></p>
+
               </div>
+              <% }) %>
+              <% } %>
+
+              <form action="/comment/<%= post._id %>" method="post">
+                <textarea name="comment" cols="30" rows="2" placeholder="Add a comment..."></textarea>
+                <button type="submit">Add Comment</button>
+              </form>
+
+
+            </div>
           </div>
+        </div>
       </div>
     </div>
     </div>

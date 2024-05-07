@@ -1,4 +1,3 @@
-/* Default styles for larger screens */
 body {
   margin: 0;
   padding: 0;
@@ -38,7 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 70px; /* Adjust this margin as needed */
+  margin-top: 70px; 
 }
 
 .photo-mid-icon {
@@ -123,15 +122,6 @@ body {
 }
 
 .delete-btn {
-  /* background-color: #ff0000;
-  color: #ffffff;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 30px;
-  right: 30px; */
   background-color: #ff6666;
   color: #fff;
   border: none;
@@ -148,17 +138,17 @@ body {
 }
 
 .icon-heart.liked::before {
-  color: red; /* Change color for liked state */
+  color: red; 
 }
 
 .icon-thumbs-down.disliked::before {
-  color: blue; /* Change color for disliked state */
+  color: blue; 
 }
 
-/* Rest of the styles */
+
 .interactions {
   text-align: center;
-  padding: 10px 0; /* Added padding */
+  padding: 10px 0; 
 }
 
 .like-section,
@@ -167,11 +157,7 @@ body {
   align-items: center;
 }
 
-/* .interactions button {
-  margin: 0 5px;
-  padding: 5px 10px; 
-  font-size: 1.5vh; 
-} */
+
 
 .interactions button {
     margin: 0 5px;
@@ -194,7 +180,6 @@ body {
   border-radius: 5px;
 }
 
-/* Media query for smaller screens */
 @media (max-width: 768px) {
   .left,
   .right {
@@ -252,7 +237,7 @@ body {
     }
   
     .block .heart-icon {
-      width: 15px; /* Adjusted size of the heart icon */
+      width: 15px; 
       margin-top: -28px;
     }
   
@@ -261,7 +246,7 @@ body {
       font-size: 15px;
       user-select: none;
       position: absolute;
-      left: 5%; /* Adjusted position to the left */
+      left: 5%; 
       top: 50%;
       transform: translateY(-50%);
     }
@@ -276,7 +261,7 @@ body {
   margin-top: -28px;
 }
 
-/* initial state of the like heart button */
+
 
 .block .heart-icon .fill-color-shape {
   fill: transparent;
@@ -286,16 +271,14 @@ body {
   filter: drop-shadow(0 3px 5px #c44133);
 }
 
-/* "liked" state of the like heart button */
+
 
 .block .heart-icon.isLiked .fill-color-shape {
   transition: fill 0.5s linear;
   fill: #e74c3c;
 }
 
-/* .block .heart-icon:hover {
-    transform: translate(-20%, calc(-50% - 3px)) scale(1.03);
-  } */
+
 .block .number-of-likes {
   font-size: 40x;
   user-select: none;
@@ -316,7 +299,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Enable scroll if needed */
+    overflow: auto; 
     background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -326,8 +309,8 @@ body {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 600px; /* Set a maximum width */
-    overflow: auto; /* Enable scroll if needed */
+    max-width: 600px; 
+    overflow: auto; 
 }
 
 .close {
@@ -345,12 +328,12 @@ body {
 }
 
 .post-image-comment {
-    max-height: 50vh; /* Set a maximum height for the image */
+    max-height: 50vh; 
     width: auto;
 }
 
 .box {
-    height: 500px; /* Adjust this height as needed */
+    height: 500px; 
     width: 100%;
     border: 1px solid black;
 }
@@ -363,7 +346,7 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; /* Enable scroll if needed */
+  overflow: auto; 
   background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -373,9 +356,9 @@ body {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 600px; /* Set a maximum width */
-  overflow: auto; /* Enable scroll if needed */
-  max-height: calc(100% - 40px); /* Adjust based on the padding and border */
+  max-width: 600px; 
+  overflow: auto; 
+  max-height: calc(100% - 40px); 
 }
 
 .close {
@@ -393,12 +376,12 @@ body {
 }
 
 .post-image-comment {
-  max-height: 50vh; /* Set a maximum height for the image */
+  max-height: 50vh; 
   width: auto;
 }
 
 .box {
-  height: 500px; /* Adjust this height as needed */
+  height: 500px; 
   width: 100%;
   border: 1px solid black;
 }
@@ -410,7 +393,6 @@ body {
 
 
 
-/* Style for comments */
 .comment {
   margin-bottom: 20px;
   padding: 10px;
@@ -427,9 +409,9 @@ body {
   margin-bottom: 5px;
 }
 
-/* Style for delete button */
+
 .delete-btn {
-  background-color: #ff6347; /* Red */
+  background-color: #ff6347; 
   color: white;
   border: none;
   padding: 5px 10px;
@@ -438,10 +420,10 @@ body {
 }
 
 .delete-btn:hover {
-  background-color: #cc0000; /* Darker Red */
+  background-color: #cc0000; 
 }
 
-/* Responsive styling */
+
 @media only screen and (max-width: 600px) {
   .comment {
     padding: 5px;

@@ -12,7 +12,7 @@ const ObjectId = mongoose.Types.ObjectId;
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const userId = req.user._id.toString(); // Convert ObjectId to string
+    const userId = req.user._id.toString(); 
     const uploadDir = path.join(__dirname, "../public/upload", userId);
     fs.stat(uploadDir, (err, stats) => {
       if (err || !stats.isDirectory()) {
@@ -94,37 +94,6 @@ router.post("/home/post/delete/:postId", async (req, res) => {
   }
 });
 
-// router.post('/post/liked/:userId/:postId', async (req, res) => {
-//     try {
-//         if (req.isAuthenticated()) {
-//             const userId = req.params.userId;
-//             const postId = req.params.postId;
-
-//             const post = await postModel.findById(postId);
-//             if (!post) {
-//                 return res.status(404).send('Post not found');
-//             }
-
-//             const alreadyLikedIndex = post.likes.findIndex(like => String(like.personLiked) === userId);
-
-//             if (alreadyLikedIndex !== -1) {
-
-//                 post.likes.splice(alreadyLikedIndex, 1);
-//                 await post.save();
-//                 res.status(200).send('Post unliked');
-//             } else {
-//                 post.likes.push({ personLiked: userId });
-//                 await post.save();
-//                 res.status(200).send('Post liked');
-//             }
-//         } else {
-//             res.redirect('/');
-//         }
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).send('Internal Server Error');
-//     }
-// });
 
 router.post("/post/like/:postId", async (req, res) => {
   if (req.isAuthenticated()) {
@@ -189,26 +158,6 @@ router.get("/liked-posts", async (req, res) => {
     }
   });
   
-
-// router.post('/post/dislike/:postId', async (req, res) => {
-//     try {
-//         const { postId } = req.params;
-//         const post = await postModel.findById(postId);
-//         if (!post) {
-//             return res.status(404).json({ message: 'Post not found' });
-//         }
-//         // Remove user from likes array
-//         const index = post.likes.indexOf(req.user._id);
-//         if (index > -1) {
-//             post.likes.splice(index, 1);
-//         }
-//         await post.save();
-//         res.sendStatus(200);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ message: 'Internal Server Error' });
-//     }
-// });
 
 router.post("/post/upload", upload, async (req, res) => {
   console.log(req.body);
