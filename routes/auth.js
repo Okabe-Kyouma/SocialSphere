@@ -17,25 +17,21 @@ router.get('/signin',(req,res)=>{
    res.render('signin');
 })
 
-router.get('/signup',(req,res)=>{
-
+router.get('/signup', (req, res) => {
     if (req.isAuthenticated()) {
-
         return res.redirect('/home');
-
     }
+    
+    res.render('signup');
+});
 
-    req.flash('user',"Wrong Email or password");
-         ans = req.flash('user');
+router.post('/signin', passport.authenticate("local", {
+    failureRedirect: '/signup',
+    failureFlash: true
+}), (req, res) => {
+    return res.redirect('/home');
+});
 
-    res.render('signup',{ans});
-})
-
-router.post('/signin',passport.authenticate("local",{ failureRedirect: '/signup',failureFlash:true}),(req,res)=>{
-
-        return res.redirect('/home');
-
-})
 
 
 
@@ -50,7 +46,7 @@ router.post('/signup', async(req,res)=>{
         req.flash('user',"User Already Exist");
          ans = req.flash('user');
 
-         res.render('signup',{ans});
+         res.render('signup');
     }
     else{
 
