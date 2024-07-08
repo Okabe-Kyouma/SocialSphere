@@ -61,7 +61,16 @@
             <div class="post">
                 <p class="post-des"><%= post.postDescription %></p>
                 <div class="uploaded-image">
-                    <img class="post-image" src="/upload/<%= post.author %>/<%= post.image %>" alt="Post Image">
+                  <% if (post.image.endsWith('.mp4')) { %>
+                    <div class="video-container">
+            <video controls>
+              <source src="/upload/<%= post.author %>/<%= post.image %>" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <% } else { %>
+            <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image" alt="Post Image">
+          <% } %>
                 </div>
                 <div class="interactions">
                     <div class="block">
@@ -83,7 +92,16 @@
           <div id="myModal-<%= post._id %>" class="modal">
               <div class="modal-content">
                   <span class="close">&times;</span>
-                  <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
+                  <% if (post.image.endsWith('.mp4')) { %>
+                    <div class="video-container">
+            <video controls>
+              <source src="/upload/<%= post.author %>/<%= post.image %>" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <% } else { %>
+            <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
+          <% } %>
                   <div class="box">
 
                     <h6 style="text-transform: uppercase; text-decoration: underline;">Comments</h6>

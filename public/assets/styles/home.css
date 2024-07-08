@@ -410,6 +410,7 @@ body {
 }
 
 
+
 .delete-btn {
   background-color: #ff6347; 
   color: white;
@@ -428,4 +429,21 @@ body {
   .comment {
     padding: 5px;
   }
+}
+
+.video-container {
+  position: relative;
+  width: 100%; /* Adjust as needed */
+  max-width: 100%; /* Ensure it doesn't exceed parent width */
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625 or 56.25%) */
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire container */
 }

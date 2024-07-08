@@ -33,7 +33,17 @@
               </div>
             </div>
             <div class="post-content">
-              <img src="/upload/<%= post.author._id %>/<%= post.image %>" class="post-image" alt="Post Image">
+              <% if (post.image && post.image.endsWith('.mp4')) { %>
+                <div class="video-container">
+                  <video controls>
+                    <source src="/upload/<%= post.author %>/<%= post.image %>" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              <% } else if (post.image) { %>
+                <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image" alt="Post Image">
+              <% } %>
+              
               <p class="post-description"><%= post.postDescription %></p>
               <div class="interactions">
                 <div class="block">
@@ -61,8 +71,17 @@
                 <button class="comment-btn" data-post-id="<%= post._id %>">Comments</button>
                 <div id="myModal-<%= post._id %>" class="modal">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
+                      <% if (post.image && post.image.endsWith('.mp4')) { %>
+                        <div class="video-container">
+                          <video controls>
+                            <source src="/upload/<%= post.author %>/<%= post.image %>" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      <% } else if (post.image) { %>
                         <img src="/upload/<%= post.author %>/<%= post.image %>" class="post-image-comment" alt="Post Image">
+                      <% } %>
+                      
                         <div class="box">
       
                           <h6 style="text-transform: uppercase; text-decoration: underline;">Comments</h6>
